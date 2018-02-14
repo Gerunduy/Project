@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище db_AAZModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sensors">
+          <Key>
+            <PropertyRef Name="id_sensor" />
+          </Key>
+          <Property Name="id_sensor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_sensor" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SensorSteel">
+          <Key>
+            <PropertyRef Name="id_sensor_steel" />
+          </Key>
+          <Property Name="id_sensor_steel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sensor" Type="int" Nullable="false" />
+          <Property Name="id_steel" Type="int" Nullable="false" />
+          <Property Name="R01" Type="int" Nullable="false" />
+          <Property Name="R02" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Steels">
+          <Key>
+            <PropertyRef Name="id_steel" />
+          </Key>
+          <Property Name="id_steel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_steel" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SensorSteel_Sensors">
+          <End Role="Sensors" Type="Self.Sensors" Multiplicity="1" />
+          <End Role="SensorSteel" Type="Self.SensorSteel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="id_sensor" />
+            </Principal>
+            <Dependent Role="SensorSteel">
+              <PropertyRef Name="id_sensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorSteel_Steels">
+          <End Role="Steels" Type="Self.Steels" Multiplicity="1" />
+          <End Role="SensorSteel" Type="Self.SensorSteel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steels">
+              <PropertyRef Name="id_steel" />
+            </Principal>
+            <Dependent Role="SensorSteel">
+              <PropertyRef Name="id_steel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище db_AAZModelContainer">
+          <EntitySet Name="Sensors" EntityType="Self.Sensors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SensorSteel" EntityType="Self.SensorSteel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Steels" EntityType="Self.Steels" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SensorSteel_Sensors" Association="Self.FK_SensorSteel_Sensors">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="SensorSteel" EntitySet="SensorSteel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorSteel_Steels" Association="Self.FK_SensorSteel_Steels">
+            <End Role="Steels" EntitySet="Steels" />
+            <End Role="SensorSteel" EntitySet="SensorSteel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_AAZModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sensors">
+          <Key>
+            <PropertyRef Name="id_sensor" />
+          </Key>
+          <Property Name="id_sensor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_sensor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SensorSteel" Relationship="Self.FK_SensorSteel_Sensors" FromRole="Sensors" ToRole="SensorSteel" />
+        </EntityType>
+        <EntityType Name="SensorSteel">
+          <Key>
+            <PropertyRef Name="id_sensor_steel" />
+          </Key>
+          <Property Name="id_sensor_steel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sensor" Type="Int32" Nullable="false" />
+          <Property Name="id_steel" Type="Int32" Nullable="false" />
+          <Property Name="R01" Type="Int32" Nullable="false" />
+          <Property Name="R02" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sensors" Relationship="Self.FK_SensorSteel_Sensors" FromRole="SensorSteel" ToRole="Sensors" />
+          <NavigationProperty Name="Steels" Relationship="Self.FK_SensorSteel_Steels" FromRole="SensorSteel" ToRole="Steels" />
+        </EntityType>
+        <EntityType Name="Steels">
+          <Key>
+            <PropertyRef Name="id_steel" />
+          </Key>
+          <Property Name="id_steel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_steel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SensorSteel" Relationship="Self.FK_SensorSteel_Steels" FromRole="Steels" ToRole="SensorSteel" />
+        </EntityType>
+        <Association Name="FK_SensorSteel_Sensors">
+          <End Role="Sensors" Type="Self.Sensors" Multiplicity="1" />
+          <End Role="SensorSteel" Type="Self.SensorSteel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="id_sensor" />
+            </Principal>
+            <Dependent Role="SensorSteel">
+              <PropertyRef Name="id_sensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorSteel_Steels">
+          <End Role="Steels" Type="Self.Steels" Multiplicity="1" />
+          <End Role="SensorSteel" Type="Self.SensorSteel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steels">
+              <PropertyRef Name="id_steel" />
+            </Principal>
+            <Dependent Role="SensorSteel">
+              <PropertyRef Name="id_steel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_AAZEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sensors" EntityType="Self.Sensors" />
+          <EntitySet Name="SensorSteel" EntityType="Self.SensorSteel" />
+          <EntitySet Name="Steels" EntityType="Self.Steels" />
+          <AssociationSet Name="FK_SensorSteel_Sensors" Association="Self.FK_SensorSteel_Sensors">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="SensorSteel" EntitySet="SensorSteel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorSteel_Steels" Association="Self.FK_SensorSteel_Steels">
+            <End Role="Steels" EntitySet="Steels" />
+            <End Role="SensorSteel" EntitySet="SensorSteel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище db_AAZModelContainer" CdmEntityContainer="db_AAZEntities">
+          <EntitySetMapping Name="Sensors">
+            <EntityTypeMapping TypeName="db_AAZModel.Sensors">
+              <MappingFragment StoreEntitySet="Sensors">
+                <ScalarProperty Name="id_sensor" ColumnName="id_sensor" />
+                <ScalarProperty Name="name_sensor" ColumnName="name_sensor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensorSteel">
+            <EntityTypeMapping TypeName="db_AAZModel.SensorSteel">
+              <MappingFragment StoreEntitySet="SensorSteel">
+                <ScalarProperty Name="id_sensor_steel" ColumnName="id_sensor_steel" />
+                <ScalarProperty Name="id_sensor" ColumnName="id_sensor" />
+                <ScalarProperty Name="id_steel" ColumnName="id_steel" />
+                <ScalarProperty Name="R01" ColumnName="R01" />
+                <ScalarProperty Name="R02" ColumnName="R02" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Steels">
+            <EntityTypeMapping TypeName="db_AAZModel.Steels">
+              <MappingFragment StoreEntitySet="Steels">
+                <ScalarProperty Name="id_steel" ColumnName="id_steel" />
+                <ScalarProperty Name="name_steel" ColumnName="name_steel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

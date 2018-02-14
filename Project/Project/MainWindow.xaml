@@ -5,25 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="Оценки работающего металла" Height="392" Width="554">
+        Title="Оценки работающего металла" Height="395" Width="566">
     <Grid>
         <TabControl x:Name="tabControl" Margin="10">
             <TabItem Header="соединения паропроводов">
                 <Grid >
-                    <Image x:Name="Image1_png" Height="56" Source="Image1.png" Stretch="Fill" Width="110" Margin="10,217,379,10"/>
+                    <Image x:Name="Image1_png" Height="56" Source="Image1.png" Stretch="Fill" Width="110" Margin="26,234,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <Label x:Name="label" Content="R(01)=" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label1" Content="R(02)=" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label2" Content="K=" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" FontSize="16"/>
-                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="65,44,0,0" TextWrapping="Wrap" Text="0,1" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="65,72,0,0" TextWrapping="Wrap" Text="0,5" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="button" Content="Расчитать" HorizontalAlignment="Left" Margin="215,44,0,0" VerticalAlignment="Top" Width="108" Height="62" Click="button_Click"/>
+                    <Button x:Name="button" Content="Расчитать" HorizontalAlignment="Left" Margin="258,131,0,0" VerticalAlignment="Top" Width="108" Height="62" Click="button_Click"/>
                     <Label x:Name="label3" Content="Критерий оценки ресурса сварных соединений паропроводов" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label4" Content="Rt(01)=" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label5" Content="Rt(02)=" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="65,100,0,0" TextWrapping="Wrap" Text="0,5" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="65,131,0,0" TextWrapping="Wrap" Text="0,4" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="label11" Content="Датчик" HorizontalAlignment="Left" Margin="204,44,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBox" Width="120" Margin="269,47,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" SelectionChanged="comboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=name_sensor}">
 
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label x:Name="label12" Content="Марка" Margin="204,77,0,0" HorizontalAlignment="Left" Width="49" Height="37" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBox1" Width="120" Margin="269,82,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" SelectionChanged="comboBox1_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=name_steel}">
 
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox x:Name="comboBox2" Width="120" Margin="65,47,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=R01}">
+
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox x:Name="comboBox3" Width="120" Margin="65,75,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=R02}">
+
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Grid>
             </TabItem>
             <TabItem Header="барабаны котлов">
@@ -76,10 +110,13 @@
                     <Image x:Name="Image21_png" Height="22" Source="Image21.png" Stretch="Fill" Width="15" Margin="17,142,480,140"/>
                     <Image x:Name="Image22_png" Height="26" Source="Image22.png" Stretch="Fill" Width="25" Margin="10,169,477,109"/>
                     <TextBox x:Name="textBox13" Height="23" TextWrapping="Wrap" Text="0,7" Width="120" Margin="64,133,328,148"/>
-                   
+
                 </Grid>
             </TabItem>
-            
+
+
+
+
 
 
 

@@ -20,17 +20,61 @@ namespace Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
         public MainWindow()
         {
             InitializeComponent();
+            client.GetlistSensorCompleted += Client_GetlistSensorCompleted;
+            client.GetlistSensorAsync();
+            client.GetlistSteelCompleted += Client_GetlistSteelCompleted;
+            client.GetlistSteelAsync();
+            client.GetlistSensor_SteelCompleted += Client_GetlistSensor_SteelCompleted;
+
         }
+
+        private void Client_GetlistSensor_SteelCompleted(object sender, ServiceReference1.GetlistSensor_SteelCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                comboBox2.ItemsSource = e.Result;
+                comboBox3.ItemsSource = e.Result;
+            }
+
+            else
+                MessageBox.Show(e.Error.Message);
+        }
+
+        private void Client_GetlistSteelCompleted(object sender, ServiceReference1.GetlistSteelCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                comboBox1.ItemsSource = e.Result;
+            }
+
+            else
+                MessageBox.Show(e.Error.Message);
+        }
+
+        private void Client_GetlistSensorCompleted(object sender, ServiceReference1.GetlistSensorCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                comboBox.ItemsSource = e.Result;
+            }
+
+            else
+                MessageBox.Show(e.Error.Message);
+        }
+
         //Критерий оценки ресурса сварных соединений паропроводов
         private void button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                double R1 = Double.Parse(textBox.Text);
-                double R2 = Double.Parse(textBox1.Text);
+                ServiceReference1.SensorSteel temp_R01 = comboBox2.SelectedItem as ServiceReference1.SensorSteel;
+                ServiceReference1.SensorSteel temp_R02 = comboBox3.SelectedItem as ServiceReference1.SensorSteel;
+                double R1 = temp_R01.R01;
+                double R2 = temp_R02.R02;
                 double Rt1 = Double.Parse(textBox2.Text);
                 double Rt2 = Double.Parse(textBox3.Text);
                 double k = (R1 * R2) / (Rt1 * Rt2);
@@ -87,6 +131,27 @@ namespace Project
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ServiceReference1.Sensors temp_Sensors = comboBox.SelectedItem as ServiceReference1.Sensors;
+            ServiceReference1.Steels temp_Steel = comboBox1.SelectedItem as ServiceReference1.Steels;
+            if (temp_Sensors != null && temp_Steel!=null)
+            {
+                client.GetlistSensor_SteelAsync(temp_Sensors.id_sensor, temp_Steel.id_steel);
+            }
+            
+        }
+
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ServiceReference1.Sensors temp_Sensors = comboBox.SelectedItem as ServiceReference1.Sensors;
+            ServiceReference1.Steels temp_Steel = comboBox1.SelectedItem as ServiceReference1.Steels;
+            if (temp_Sensors != null && temp_Steel != null)
+            {
+                client.GetlistSensor_SteelAsync(temp_Sensors.id_sensor, temp_Steel.id_steel);
             }
         }
     }
