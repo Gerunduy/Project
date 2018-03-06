@@ -33,7 +33,7 @@ namespace WcfService1
                 return null;
             }
         }
-        public List<Steels> GetlistSteel()
+        public List<Steels> GetlistSteelM1(int id_Sensor)
         {
             try
             {
@@ -41,19 +41,61 @@ namespace WcfService1
                 List<Steels> lv = bd.Steels.ToList();
                 for (int i = 0; i < lv.Count; i++)
                 {
-                    Steels temp = new Steels();
-                    temp.id_steel = lv[i].id_steel;
-                    temp.name_steel = lv[i].name_steel;
-                    result.Add(temp);
+                    int id_steel = lv[i].id_steel;
+                    SensorSteel sensorSteel = bd.SensorSteel.Where(o => o.id_sensor == id_Sensor && o.id_steel== id_steel).FirstOrDefault();
+                    if (sensorSteel != null)
+                    {
+                        Steels temp = new Steels();
+                        temp.id_steel = lv[i].id_steel;
+                        temp.name_steel = lv[i].name_steel;
+                        result.Add(temp);
+                    }
+                    
                 }
                 return result;
             }
             catch (Exception ex)
             {
-                return null;
+                List<Steels> result2 = new List<Steels>();
+                Steels temp = new Steels();
+                temp.id_steel = 1;
+                temp.name_steel = ex.Message;
+                result2.Add(temp);
+                return result2;
             }
         }
-        public List<SensorSteel> GetlistSensor_Steel( int Id_Sensors, int Id_Steel)
+        public List<Steels> GetlistSteelM3(int id_Sensor)
+        {
+            try
+            {
+                List<Steels> result = new List<Steels>();
+                List<Steels> lv = bd.Steels.ToList();
+                for (int i = 0; i < lv.Count; i++)
+                {
+                    int id_steel = lv[i].id_steel;
+                    SensorSteelM3 sensorSteel = bd.SensorSteelM3.Where(o => o.id_sensor == id_Sensor && o.id_steel == id_steel).FirstOrDefault();
+                    if (sensorSteel != null)
+                    {
+                        Steels temp = new Steels();
+                        temp.id_steel = lv[i].id_steel;
+                        temp.name_steel = lv[i].name_steel;
+                        result.Add(temp);
+                    }
+
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                List<Steels> result2 = new List<Steels>();
+                Steels temp = new Steels();
+                temp.id_steel = 1;
+                temp.name_steel = ex.Message;
+                result2.Add(temp);
+                return result2;
+            }
+        }
+        public List<SensorSteel> GetlistSensor_SteelM1( int Id_Sensors, int Id_Steel)
         {
             try
             {
@@ -68,6 +110,30 @@ namespace WcfService1
                     temp.id_sensor = lv[i].id_sensor;
                     temp.R01 = lv[i].R01;
                     temp.R02 = lv[i].R02;
+                    result.Add(temp);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public List<SensorSteelM3> GetlistSensor_SteelM3(int Id_Sensors, int Id_Steel)
+        {
+            try
+            {
+
+
+                List<SensorSteelM3> result = new List<SensorSteelM3>();
+                List<SensorSteelM3> lv = bd.SensorSteelM3.Where(o => o.id_sensor == Id_Sensors && o.id_steel == Id_Steel).ToList();
+                for (int i = 0; i < lv.Count; i++)
+                {
+                    SensorSteelM3 temp = new SensorSteelM3();
+                    temp.id_sensor_steel_m3 = lv[i].id_sensor_steel_m3;
+                    temp.id_sensor = lv[i].id_sensor;
+                    temp.W0 = lv[i].W0;
+                    temp.Wf = lv[i].Wf;
                     result.Add(temp);
                 }
                 return result;

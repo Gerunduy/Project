@@ -28,5 +28,6 @@ namespace WcfService1
         public virtual DbSet<Sensors> Sensors { get; set; }
         public virtual DbSet<SensorSteel> SensorSteel { get; set; }
         public virtual DbSet<Steels> Steels { get; set; }
+        public virtual DbSet<SensorSteelM3> SensorSteelM3 { get; set; }
     }
 }

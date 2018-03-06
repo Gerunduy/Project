@@ -26,6 +26,9 @@ namespace Project.ServiceReference1 {
         private Project.ServiceReference1.SensorSteel[] SensorSteelField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Project.ServiceReference1.SensorSteelM3[] SensorSteelM3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int id_sensorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -50,6 +53,19 @@ namespace Project.ServiceReference1 {
                 if ((object.ReferenceEquals(this.SensorSteelField, value) != true)) {
                     this.SensorSteelField = value;
                     this.RaisePropertyChanged("SensorSteel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Project.ServiceReference1.SensorSteelM3[] SensorSteelM3 {
+            get {
+                return this.SensorSteelM3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SensorSteelM3Field, value) != true)) {
+                    this.SensorSteelM3Field = value;
+                    this.RaisePropertyChanged("SensorSteelM3");
                 }
             }
         }
@@ -233,6 +249,147 @@ namespace Project.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SensorSteelM3", Namespace="http://schemas.datacontract.org/2004/07/WcfService1")]
+    [System.SerializableAttribute()]
+    public partial class SensorSteelM3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Project.ServiceReference1.Sensors SensorsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Project.ServiceReference1.Steels SteelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int W0Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WfField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int id_sensorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int id_sensor_steel_m3Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int id_steelField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Project.ServiceReference1.Sensors Sensors {
+            get {
+                return this.SensorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SensorsField, value) != true)) {
+                    this.SensorsField = value;
+                    this.RaisePropertyChanged("Sensors");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Project.ServiceReference1.Steels Steels {
+            get {
+                return this.SteelsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SteelsField, value) != true)) {
+                    this.SteelsField = value;
+                    this.RaisePropertyChanged("Steels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int W0 {
+            get {
+                return this.W0Field;
+            }
+            set {
+                if ((this.W0Field.Equals(value) != true)) {
+                    this.W0Field = value;
+                    this.RaisePropertyChanged("W0");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Wf {
+            get {
+                return this.WfField;
+            }
+            set {
+                if ((this.WfField.Equals(value) != true)) {
+                    this.WfField = value;
+                    this.RaisePropertyChanged("Wf");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id_sensor {
+            get {
+                return this.id_sensorField;
+            }
+            set {
+                if ((this.id_sensorField.Equals(value) != true)) {
+                    this.id_sensorField = value;
+                    this.RaisePropertyChanged("id_sensor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id_sensor_steel_m3 {
+            get {
+                return this.id_sensor_steel_m3Field;
+            }
+            set {
+                if ((this.id_sensor_steel_m3Field.Equals(value) != true)) {
+                    this.id_sensor_steel_m3Field = value;
+                    this.RaisePropertyChanged("id_sensor_steel_m3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id_steel {
+            get {
+                return this.id_steelField;
+            }
+            set {
+                if ((this.id_steelField.Equals(value) != true)) {
+                    this.id_steelField = value;
+                    this.RaisePropertyChanged("id_steel");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Steels", Namespace="http://schemas.datacontract.org/2004/07/WcfService1")]
     [System.SerializableAttribute()]
     public partial class Steels : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -242,6 +399,9 @@ namespace Project.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Project.ServiceReference1.SensorSteel[] SensorSteelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Project.ServiceReference1.SensorSteelM3[] SensorSteelM3Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int id_steelField;
@@ -268,6 +428,19 @@ namespace Project.ServiceReference1 {
                 if ((object.ReferenceEquals(this.SensorSteelField, value) != true)) {
                     this.SensorSteelField = value;
                     this.RaisePropertyChanged("SensorSteel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Project.ServiceReference1.SensorSteelM3[] SensorSteelM3 {
+            get {
+                return this.SensorSteelM3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SensorSteelM3Field, value) != true)) {
+                    this.SensorSteelM3Field = value;
+                    this.RaisePropertyChanged("SensorSteelM3");
                 }
             }
         }
@@ -320,21 +493,37 @@ namespace Project.ServiceReference1 {
         
         Project.ServiceReference1.Sensors[] EndGetlistSensor(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSteel", ReplyAction="http://tempuri.org/IService1/GetlistSteelResponse")]
-        Project.ServiceReference1.Steels[] GetlistSteel();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSteelM1", ReplyAction="http://tempuri.org/IService1/GetlistSteelM1Response")]
+        Project.ServiceReference1.Steels[] GetlistSteelM1(int id_Sensor);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetlistSteel", ReplyAction="http://tempuri.org/IService1/GetlistSteelResponse")]
-        System.IAsyncResult BeginGetlistSteel(System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetlistSteelM1", ReplyAction="http://tempuri.org/IService1/GetlistSteelM1Response")]
+        System.IAsyncResult BeginGetlistSteelM1(int id_Sensor, System.AsyncCallback callback, object asyncState);
         
-        Project.ServiceReference1.Steels[] EndGetlistSteel(System.IAsyncResult result);
+        Project.ServiceReference1.Steels[] EndGetlistSteelM1(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSensor_Steel", ReplyAction="http://tempuri.org/IService1/GetlistSensor_SteelResponse")]
-        Project.ServiceReference1.SensorSteel[] GetlistSensor_Steel(int Id_Sensors, int Id_Steel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSteelM3", ReplyAction="http://tempuri.org/IService1/GetlistSteelM3Response")]
+        Project.ServiceReference1.Steels[] GetlistSteelM3(int id_Sensor);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetlistSensor_Steel", ReplyAction="http://tempuri.org/IService1/GetlistSensor_SteelResponse")]
-        System.IAsyncResult BeginGetlistSensor_Steel(int Id_Sensors, int Id_Steel, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetlistSteelM3", ReplyAction="http://tempuri.org/IService1/GetlistSteelM3Response")]
+        System.IAsyncResult BeginGetlistSteelM3(int id_Sensor, System.AsyncCallback callback, object asyncState);
         
-        Project.ServiceReference1.SensorSteel[] EndGetlistSensor_Steel(System.IAsyncResult result);
+        Project.ServiceReference1.Steels[] EndGetlistSteelM3(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSensor_SteelM1", ReplyAction="http://tempuri.org/IService1/GetlistSensor_SteelM1Response")]
+        Project.ServiceReference1.SensorSteel[] GetlistSensor_SteelM1(int Id_Sensors, int Id_Steel);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetlistSensor_SteelM1", ReplyAction="http://tempuri.org/IService1/GetlistSensor_SteelM1Response")]
+        System.IAsyncResult BeginGetlistSensor_SteelM1(int Id_Sensors, int Id_Steel, System.AsyncCallback callback, object asyncState);
+        
+        Project.ServiceReference1.SensorSteel[] EndGetlistSensor_SteelM1(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSensor_SteelM3", ReplyAction="http://tempuri.org/IService1/GetlistSensor_SteelM3Response")]
+        Project.ServiceReference1.SensorSteelM3[] GetlistSensor_SteelM3(int Id_Sensors, int Id_Steel);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetlistSensor_SteelM3", ReplyAction="http://tempuri.org/IService1/GetlistSensor_SteelM3Response")]
+        System.IAsyncResult BeginGetlistSensor_SteelM3(int Id_Sensors, int Id_Steel, System.AsyncCallback callback, object asyncState);
+        
+        Project.ServiceReference1.SensorSteelM3[] EndGetlistSensor_SteelM3(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -362,11 +551,11 @@ namespace Project.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetlistSteelCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetlistSteelM1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetlistSteelCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetlistSteelM1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -381,11 +570,30 @@ namespace Project.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetlistSensor_SteelCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetlistSteelM3CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetlistSensor_SteelCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetlistSteelM3CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Project.ServiceReference1.Steels[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Project.ServiceReference1.Steels[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetlistSensor_SteelM1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetlistSensor_SteelM1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -400,6 +608,25 @@ namespace Project.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetlistSensor_SteelM3CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetlistSensor_SteelM3CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Project.ServiceReference1.SensorSteelM3[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Project.ServiceReference1.SensorSteelM3[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<Project.ServiceReference1.IService1>, Project.ServiceReference1.IService1 {
         
         private BeginOperationDelegate onBeginGetlistSensorDelegate;
@@ -408,17 +635,29 @@ namespace Project.ServiceReference1 {
         
         private System.Threading.SendOrPostCallback onGetlistSensorCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetlistSteelDelegate;
+        private BeginOperationDelegate onBeginGetlistSteelM1Delegate;
         
-        private EndOperationDelegate onEndGetlistSteelDelegate;
+        private EndOperationDelegate onEndGetlistSteelM1Delegate;
         
-        private System.Threading.SendOrPostCallback onGetlistSteelCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetlistSteelM1CompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetlistSensor_SteelDelegate;
+        private BeginOperationDelegate onBeginGetlistSteelM3Delegate;
         
-        private EndOperationDelegate onEndGetlistSensor_SteelDelegate;
+        private EndOperationDelegate onEndGetlistSteelM3Delegate;
         
-        private System.Threading.SendOrPostCallback onGetlistSensor_SteelCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetlistSteelM3CompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetlistSensor_SteelM1Delegate;
+        
+        private EndOperationDelegate onEndGetlistSensor_SteelM1Delegate;
+        
+        private System.Threading.SendOrPostCallback onGetlistSensor_SteelM1CompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetlistSensor_SteelM3Delegate;
+        
+        private EndOperationDelegate onEndGetlistSensor_SteelM3Delegate;
+        
+        private System.Threading.SendOrPostCallback onGetlistSensor_SteelM3CompletedDelegate;
         
         public Service1Client() {
         }
@@ -441,9 +680,13 @@ namespace Project.ServiceReference1 {
         
         public event System.EventHandler<GetlistSensorCompletedEventArgs> GetlistSensorCompleted;
         
-        public event System.EventHandler<GetlistSteelCompletedEventArgs> GetlistSteelCompleted;
+        public event System.EventHandler<GetlistSteelM1CompletedEventArgs> GetlistSteelM1Completed;
         
-        public event System.EventHandler<GetlistSensor_SteelCompletedEventArgs> GetlistSensor_SteelCompleted;
+        public event System.EventHandler<GetlistSteelM3CompletedEventArgs> GetlistSteelM3Completed;
+        
+        public event System.EventHandler<GetlistSensor_SteelM1CompletedEventArgs> GetlistSensor_SteelM1Completed;
+        
+        public event System.EventHandler<GetlistSensor_SteelM3CompletedEventArgs> GetlistSensor_SteelM3Completed;
         
         public Project.ServiceReference1.Sensors[] GetlistSensor() {
             return base.Channel.GetlistSensor();
@@ -493,104 +736,208 @@ namespace Project.ServiceReference1 {
             base.InvokeAsync(this.onBeginGetlistSensorDelegate, null, this.onEndGetlistSensorDelegate, this.onGetlistSensorCompletedDelegate, userState);
         }
         
-        public Project.ServiceReference1.Steels[] GetlistSteel() {
-            return base.Channel.GetlistSteel();
+        public Project.ServiceReference1.Steels[] GetlistSteelM1(int id_Sensor) {
+            return base.Channel.GetlistSteelM1(id_Sensor);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetlistSteel(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetlistSteel(callback, asyncState);
+        public System.IAsyncResult BeginGetlistSteelM1(int id_Sensor, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetlistSteelM1(id_Sensor, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Project.ServiceReference1.Steels[] EndGetlistSteel(System.IAsyncResult result) {
-            return base.Channel.EndGetlistSteel(result);
+        public Project.ServiceReference1.Steels[] EndGetlistSteelM1(System.IAsyncResult result) {
+            return base.Channel.EndGetlistSteelM1(result);
         }
         
-        private System.IAsyncResult OnBeginGetlistSteel(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetlistSteel(callback, asyncState);
+        private System.IAsyncResult OnBeginGetlistSteelM1(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id_Sensor = ((int)(inValues[0]));
+            return this.BeginGetlistSteelM1(id_Sensor, callback, asyncState);
         }
         
-        private object[] OnEndGetlistSteel(System.IAsyncResult result) {
-            Project.ServiceReference1.Steels[] retVal = this.EndGetlistSteel(result);
+        private object[] OnEndGetlistSteelM1(System.IAsyncResult result) {
+            Project.ServiceReference1.Steels[] retVal = this.EndGetlistSteelM1(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetlistSteelCompleted(object state) {
-            if ((this.GetlistSteelCompleted != null)) {
+        private void OnGetlistSteelM1Completed(object state) {
+            if ((this.GetlistSteelM1Completed != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetlistSteelCompleted(this, new GetlistSteelCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetlistSteelM1Completed(this, new GetlistSteelM1CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetlistSteelAsync() {
-            this.GetlistSteelAsync(null);
+        public void GetlistSteelM1Async(int id_Sensor) {
+            this.GetlistSteelM1Async(id_Sensor, null);
         }
         
-        public void GetlistSteelAsync(object userState) {
-            if ((this.onBeginGetlistSteelDelegate == null)) {
-                this.onBeginGetlistSteelDelegate = new BeginOperationDelegate(this.OnBeginGetlistSteel);
+        public void GetlistSteelM1Async(int id_Sensor, object userState) {
+            if ((this.onBeginGetlistSteelM1Delegate == null)) {
+                this.onBeginGetlistSteelM1Delegate = new BeginOperationDelegate(this.OnBeginGetlistSteelM1);
             }
-            if ((this.onEndGetlistSteelDelegate == null)) {
-                this.onEndGetlistSteelDelegate = new EndOperationDelegate(this.OnEndGetlistSteel);
+            if ((this.onEndGetlistSteelM1Delegate == null)) {
+                this.onEndGetlistSteelM1Delegate = new EndOperationDelegate(this.OnEndGetlistSteelM1);
             }
-            if ((this.onGetlistSteelCompletedDelegate == null)) {
-                this.onGetlistSteelCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetlistSteelCompleted);
+            if ((this.onGetlistSteelM1CompletedDelegate == null)) {
+                this.onGetlistSteelM1CompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetlistSteelM1Completed);
             }
-            base.InvokeAsync(this.onBeginGetlistSteelDelegate, null, this.onEndGetlistSteelDelegate, this.onGetlistSteelCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetlistSteelM1Delegate, new object[] {
+                        id_Sensor}, this.onEndGetlistSteelM1Delegate, this.onGetlistSteelM1CompletedDelegate, userState);
         }
         
-        public Project.ServiceReference1.SensorSteel[] GetlistSensor_Steel(int Id_Sensors, int Id_Steel) {
-            return base.Channel.GetlistSensor_Steel(Id_Sensors, Id_Steel);
+        public Project.ServiceReference1.Steels[] GetlistSteelM3(int id_Sensor) {
+            return base.Channel.GetlistSteelM3(id_Sensor);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetlistSensor_Steel(int Id_Sensors, int Id_Steel, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetlistSensor_Steel(Id_Sensors, Id_Steel, callback, asyncState);
+        public System.IAsyncResult BeginGetlistSteelM3(int id_Sensor, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetlistSteelM3(id_Sensor, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public Project.ServiceReference1.SensorSteel[] EndGetlistSensor_Steel(System.IAsyncResult result) {
-            return base.Channel.EndGetlistSensor_Steel(result);
+        public Project.ServiceReference1.Steels[] EndGetlistSteelM3(System.IAsyncResult result) {
+            return base.Channel.EndGetlistSteelM3(result);
         }
         
-        private System.IAsyncResult OnBeginGetlistSensor_Steel(object[] inValues, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult OnBeginGetlistSteelM3(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id_Sensor = ((int)(inValues[0]));
+            return this.BeginGetlistSteelM3(id_Sensor, callback, asyncState);
+        }
+        
+        private object[] OnEndGetlistSteelM3(System.IAsyncResult result) {
+            Project.ServiceReference1.Steels[] retVal = this.EndGetlistSteelM3(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetlistSteelM3Completed(object state) {
+            if ((this.GetlistSteelM3Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetlistSteelM3Completed(this, new GetlistSteelM3CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetlistSteelM3Async(int id_Sensor) {
+            this.GetlistSteelM3Async(id_Sensor, null);
+        }
+        
+        public void GetlistSteelM3Async(int id_Sensor, object userState) {
+            if ((this.onBeginGetlistSteelM3Delegate == null)) {
+                this.onBeginGetlistSteelM3Delegate = new BeginOperationDelegate(this.OnBeginGetlistSteelM3);
+            }
+            if ((this.onEndGetlistSteelM3Delegate == null)) {
+                this.onEndGetlistSteelM3Delegate = new EndOperationDelegate(this.OnEndGetlistSteelM3);
+            }
+            if ((this.onGetlistSteelM3CompletedDelegate == null)) {
+                this.onGetlistSteelM3CompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetlistSteelM3Completed);
+            }
+            base.InvokeAsync(this.onBeginGetlistSteelM3Delegate, new object[] {
+                        id_Sensor}, this.onEndGetlistSteelM3Delegate, this.onGetlistSteelM3CompletedDelegate, userState);
+        }
+        
+        public Project.ServiceReference1.SensorSteel[] GetlistSensor_SteelM1(int Id_Sensors, int Id_Steel) {
+            return base.Channel.GetlistSensor_SteelM1(Id_Sensors, Id_Steel);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetlistSensor_SteelM1(int Id_Sensors, int Id_Steel, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetlistSensor_SteelM1(Id_Sensors, Id_Steel, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Project.ServiceReference1.SensorSteel[] EndGetlistSensor_SteelM1(System.IAsyncResult result) {
+            return base.Channel.EndGetlistSensor_SteelM1(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetlistSensor_SteelM1(object[] inValues, System.AsyncCallback callback, object asyncState) {
             int Id_Sensors = ((int)(inValues[0]));
             int Id_Steel = ((int)(inValues[1]));
-            return this.BeginGetlistSensor_Steel(Id_Sensors, Id_Steel, callback, asyncState);
+            return this.BeginGetlistSensor_SteelM1(Id_Sensors, Id_Steel, callback, asyncState);
         }
         
-        private object[] OnEndGetlistSensor_Steel(System.IAsyncResult result) {
-            Project.ServiceReference1.SensorSteel[] retVal = this.EndGetlistSensor_Steel(result);
+        private object[] OnEndGetlistSensor_SteelM1(System.IAsyncResult result) {
+            Project.ServiceReference1.SensorSteel[] retVal = this.EndGetlistSensor_SteelM1(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetlistSensor_SteelCompleted(object state) {
-            if ((this.GetlistSensor_SteelCompleted != null)) {
+        private void OnGetlistSensor_SteelM1Completed(object state) {
+            if ((this.GetlistSensor_SteelM1Completed != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetlistSensor_SteelCompleted(this, new GetlistSensor_SteelCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetlistSensor_SteelM1Completed(this, new GetlistSensor_SteelM1CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetlistSensor_SteelAsync(int Id_Sensors, int Id_Steel) {
-            this.GetlistSensor_SteelAsync(Id_Sensors, Id_Steel, null);
+        public void GetlistSensor_SteelM1Async(int Id_Sensors, int Id_Steel) {
+            this.GetlistSensor_SteelM1Async(Id_Sensors, Id_Steel, null);
         }
         
-        public void GetlistSensor_SteelAsync(int Id_Sensors, int Id_Steel, object userState) {
-            if ((this.onBeginGetlistSensor_SteelDelegate == null)) {
-                this.onBeginGetlistSensor_SteelDelegate = new BeginOperationDelegate(this.OnBeginGetlistSensor_Steel);
+        public void GetlistSensor_SteelM1Async(int Id_Sensors, int Id_Steel, object userState) {
+            if ((this.onBeginGetlistSensor_SteelM1Delegate == null)) {
+                this.onBeginGetlistSensor_SteelM1Delegate = new BeginOperationDelegate(this.OnBeginGetlistSensor_SteelM1);
             }
-            if ((this.onEndGetlistSensor_SteelDelegate == null)) {
-                this.onEndGetlistSensor_SteelDelegate = new EndOperationDelegate(this.OnEndGetlistSensor_Steel);
+            if ((this.onEndGetlistSensor_SteelM1Delegate == null)) {
+                this.onEndGetlistSensor_SteelM1Delegate = new EndOperationDelegate(this.OnEndGetlistSensor_SteelM1);
             }
-            if ((this.onGetlistSensor_SteelCompletedDelegate == null)) {
-                this.onGetlistSensor_SteelCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetlistSensor_SteelCompleted);
+            if ((this.onGetlistSensor_SteelM1CompletedDelegate == null)) {
+                this.onGetlistSensor_SteelM1CompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetlistSensor_SteelM1Completed);
             }
-            base.InvokeAsync(this.onBeginGetlistSensor_SteelDelegate, new object[] {
+            base.InvokeAsync(this.onBeginGetlistSensor_SteelM1Delegate, new object[] {
                         Id_Sensors,
-                        Id_Steel}, this.onEndGetlistSensor_SteelDelegate, this.onGetlistSensor_SteelCompletedDelegate, userState);
+                        Id_Steel}, this.onEndGetlistSensor_SteelM1Delegate, this.onGetlistSensor_SteelM1CompletedDelegate, userState);
+        }
+        
+        public Project.ServiceReference1.SensorSteelM3[] GetlistSensor_SteelM3(int Id_Sensors, int Id_Steel) {
+            return base.Channel.GetlistSensor_SteelM3(Id_Sensors, Id_Steel);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetlistSensor_SteelM3(int Id_Sensors, int Id_Steel, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetlistSensor_SteelM3(Id_Sensors, Id_Steel, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Project.ServiceReference1.SensorSteelM3[] EndGetlistSensor_SteelM3(System.IAsyncResult result) {
+            return base.Channel.EndGetlistSensor_SteelM3(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetlistSensor_SteelM3(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int Id_Sensors = ((int)(inValues[0]));
+            int Id_Steel = ((int)(inValues[1]));
+            return this.BeginGetlistSensor_SteelM3(Id_Sensors, Id_Steel, callback, asyncState);
+        }
+        
+        private object[] OnEndGetlistSensor_SteelM3(System.IAsyncResult result) {
+            Project.ServiceReference1.SensorSteelM3[] retVal = this.EndGetlistSensor_SteelM3(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetlistSensor_SteelM3Completed(object state) {
+            if ((this.GetlistSensor_SteelM3Completed != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetlistSensor_SteelM3Completed(this, new GetlistSensor_SteelM3CompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetlistSensor_SteelM3Async(int Id_Sensors, int Id_Steel) {
+            this.GetlistSensor_SteelM3Async(Id_Sensors, Id_Steel, null);
+        }
+        
+        public void GetlistSensor_SteelM3Async(int Id_Sensors, int Id_Steel, object userState) {
+            if ((this.onBeginGetlistSensor_SteelM3Delegate == null)) {
+                this.onBeginGetlistSensor_SteelM3Delegate = new BeginOperationDelegate(this.OnBeginGetlistSensor_SteelM3);
+            }
+            if ((this.onEndGetlistSensor_SteelM3Delegate == null)) {
+                this.onEndGetlistSensor_SteelM3Delegate = new EndOperationDelegate(this.OnEndGetlistSensor_SteelM3);
+            }
+            if ((this.onGetlistSensor_SteelM3CompletedDelegate == null)) {
+                this.onGetlistSensor_SteelM3CompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetlistSensor_SteelM3Completed);
+            }
+            base.InvokeAsync(this.onBeginGetlistSensor_SteelM3Delegate, new object[] {
+                        Id_Sensors,
+                        Id_Steel}, this.onEndGetlistSensor_SteelM3Delegate, this.onGetlistSensor_SteelM3CompletedDelegate, userState);
         }
     }
 }

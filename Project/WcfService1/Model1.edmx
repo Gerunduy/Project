@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище db_AAZModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище db_AAZModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Sensors">
           <Key>
             <PropertyRef Name="id_sensor" />
@@ -21,6 +21,16 @@
           <Property Name="id_steel" Type="int" Nullable="false" />
           <Property Name="R01" Type="int" Nullable="false" />
           <Property Name="R02" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SensorSteelM3">
+          <Key>
+            <PropertyRef Name="id_sensor_steel_m3" />
+          </Key>
+          <Property Name="id_sensor_steel_m3" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sensor" Type="int" Nullable="false" />
+          <Property Name="id_steel" Type="int" Nullable="false" />
+          <Property Name="W0" Type="int" Nullable="false" />
+          <Property Name="Wf" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Steels">
           <Key>
@@ -53,9 +63,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SensorSteelM3_Sensors">
+          <End Role="Sensors" Type="Self.Sensors" Multiplicity="1" />
+          <End Role="SensorSteelM3" Type="Self.SensorSteelM3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="id_sensor" />
+            </Principal>
+            <Dependent Role="SensorSteelM3">
+              <PropertyRef Name="id_sensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorSteelM3_Steels">
+          <End Role="Steels" Type="Self.Steels" Multiplicity="1" />
+          <End Role="SensorSteelM3" Type="Self.SensorSteelM3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steels">
+              <PropertyRef Name="id_steel" />
+            </Principal>
+            <Dependent Role="SensorSteelM3">
+              <PropertyRef Name="id_steel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище db_AAZModelContainer">
           <EntitySet Name="Sensors" EntityType="Self.Sensors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SensorSteel" EntityType="Self.SensorSteel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SensorSteelM3" EntityType="Self.SensorSteelM3" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Steels" EntityType="Self.Steels" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_SensorSteel_Sensors" Association="Self.FK_SensorSteel_Sensors">
             <End Role="Sensors" EntitySet="Sensors" />
@@ -65,9 +100,16 @@
             <End Role="Steels" EntitySet="Steels" />
             <End Role="SensorSteel" EntitySet="SensorSteel" />
           </AssociationSet>
+          <AssociationSet Name="FK_SensorSteelM3_Sensors" Association="Self.FK_SensorSteelM3_Sensors">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="SensorSteelM3" EntitySet="SensorSteelM3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorSteelM3_Steels" Association="Self.FK_SensorSteelM3_Steels">
+            <End Role="Steels" EntitySet="Steels" />
+            <End Role="SensorSteelM3" EntitySet="SensorSteelM3" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_AAZModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -78,6 +120,7 @@
           <Property Name="id_sensor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name_sensor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SensorSteel" Relationship="Self.FK_SensorSteel_Sensors" FromRole="Sensors" ToRole="SensorSteel" />
+          <NavigationProperty Name="SensorSteelM3" Relationship="db_AAZModel.FK_SensorSteelM3_Sensors" FromRole="Sensors" ToRole="SensorSteelM3" />
         </EntityType>
         <EntityType Name="SensorSteel">
           <Key>
@@ -98,6 +141,7 @@
           <Property Name="id_steel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name_steel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SensorSteel" Relationship="Self.FK_SensorSteel_Steels" FromRole="Steels" ToRole="SensorSteel" />
+          <NavigationProperty Name="SensorSteelM3" Relationship="db_AAZModel.FK_SensorSteelM3_Steels" FromRole="Steels" ToRole="SensorSteelM3" />
         </EntityType>
         <Association Name="FK_SensorSteel_Sensors">
           <End Role="Sensors" Type="Self.Sensors" Multiplicity="1" />
@@ -135,7 +179,52 @@
             <End Role="Steels" EntitySet="Steels" />
             <End Role="SensorSteel" EntitySet="SensorSteel" />
           </AssociationSet>
+          <EntitySet Name="SensorSteelM3" EntityType="db_AAZModel.SensorSteelM3" />
+          <AssociationSet Name="FK_SensorSteelM3_Sensors" Association="db_AAZModel.FK_SensorSteelM3_Sensors">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="SensorSteelM3" EntitySet="SensorSteelM3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensorSteelM3_Steels" Association="db_AAZModel.FK_SensorSteelM3_Steels">
+            <End Role="Steels" EntitySet="Steels" />
+            <End Role="SensorSteelM3" EntitySet="SensorSteelM3" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SensorSteelM3">
+          <Key>
+            <PropertyRef Name="id_sensor_steel_m3" />
+          </Key>
+          <Property Name="id_sensor_steel_m3" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sensor" Type="Int32" Nullable="false" />
+          <Property Name="id_steel" Type="Int32" Nullable="false" />
+          <Property Name="W0" Type="Int32" Nullable="false" />
+          <Property Name="Wf" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sensors" Relationship="db_AAZModel.FK_SensorSteelM3_Sensors" FromRole="SensorSteelM3" ToRole="Sensors" />
+          <NavigationProperty Name="Steels" Relationship="db_AAZModel.FK_SensorSteelM3_Steels" FromRole="SensorSteelM3" ToRole="Steels" />
+        </EntityType>
+        <Association Name="FK_SensorSteelM3_Sensors">
+          <End Type="db_AAZModel.Sensors" Role="Sensors" Multiplicity="1" />
+          <End Type="db_AAZModel.SensorSteelM3" Role="SensorSteelM3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="id_sensor" />
+            </Principal>
+            <Dependent Role="SensorSteelM3">
+              <PropertyRef Name="id_sensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensorSteelM3_Steels">
+          <End Type="db_AAZModel.Steels" Role="Steels" Multiplicity="1" />
+          <End Type="db_AAZModel.SensorSteelM3" Role="SensorSteelM3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Steels">
+              <PropertyRef Name="id_steel" />
+            </Principal>
+            <Dependent Role="SensorSteelM3">
+              <PropertyRef Name="id_steel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -166,6 +255,17 @@
               <MappingFragment StoreEntitySet="Steels">
                 <ScalarProperty Name="id_steel" ColumnName="id_steel" />
                 <ScalarProperty Name="name_steel" ColumnName="name_steel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensorSteelM3">
+            <EntityTypeMapping TypeName="db_AAZModel.SensorSteelM3">
+              <MappingFragment StoreEntitySet="SensorSteelM3">
+                <ScalarProperty Name="Wf" ColumnName="Wf" />
+                <ScalarProperty Name="W0" ColumnName="W0" />
+                <ScalarProperty Name="id_steel" ColumnName="id_steel" />
+                <ScalarProperty Name="id_sensor" ColumnName="id_sensor" />
+                <ScalarProperty Name="id_sensor_steel_m3" ColumnName="id_sensor_steel_m3" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

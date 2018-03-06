@@ -18,6 +18,7 @@ namespace WcfService1
         public Steels()
         {
             this.SensorSteel = new HashSet<SensorSteel>();
+            this.SensorSteelM3 = new HashSet<SensorSteelM3>();
         }
     
         public int id_steel { get; set; }
@@ -25,5 +26,7 @@ namespace WcfService1
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SensorSteel> SensorSteel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SensorSteelM3> SensorSteelM3 { get; set; }
     }
 }

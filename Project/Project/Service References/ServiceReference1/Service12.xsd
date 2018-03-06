@@ -9,6 +9,7 @@
   <xs:complexType name="Sensors">
     <xs:sequence>
       <xs:element minOccurs="0" name="SensorSteel" nillable="true" type="tns:ArrayOfSensorSteel" />
+      <xs:element minOccurs="0" name="SensorSteelM3" nillable="true" type="tns:ArrayOfSensorSteelM3" />
       <xs:element minOccurs="0" name="id_sensor" type="xs:int" />
       <xs:element minOccurs="0" name="name_sensor" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -35,11 +36,30 @@
   <xs:complexType name="Steels">
     <xs:sequence>
       <xs:element minOccurs="0" name="SensorSteel" nillable="true" type="tns:ArrayOfSensorSteel" />
+      <xs:element minOccurs="0" name="SensorSteelM3" nillable="true" type="tns:ArrayOfSensorSteelM3" />
       <xs:element minOccurs="0" name="id_steel" type="xs:int" />
       <xs:element minOccurs="0" name="name_steel" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Steels" nillable="true" type="tns:Steels" />
+  <xs:complexType name="ArrayOfSensorSteelM3">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SensorSteelM3" nillable="true" type="tns:SensorSteelM3" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSensorSteelM3" nillable="true" type="tns:ArrayOfSensorSteelM3" />
+  <xs:complexType name="SensorSteelM3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Sensors" nillable="true" type="tns:Sensors" />
+      <xs:element minOccurs="0" name="Steels" nillable="true" type="tns:Steels" />
+      <xs:element minOccurs="0" name="W0" type="xs:int" />
+      <xs:element minOccurs="0" name="Wf" type="xs:int" />
+      <xs:element minOccurs="0" name="id_sensor" type="xs:int" />
+      <xs:element minOccurs="0" name="id_sensor_steel_m3" type="xs:int" />
+      <xs:element minOccurs="0" name="id_steel" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SensorSteelM3" nillable="true" type="tns:SensorSteelM3" />
   <xs:complexType name="ArrayOfSteels">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Steels" nillable="true" type="tns:Steels" />

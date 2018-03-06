@@ -17,10 +17,16 @@ namespace WcfService1
         List<Sensors> GetlistSensor();
 
         [OperationContract]
-        List<Steels> GetlistSteel();
+        List<Steels> GetlistSteelM1(int id_Sensor);
 
         [OperationContract]
-        List<SensorSteel> GetlistSensor_Steel(int Id_Sensors, int Id_Steel);
+        List<Steels> GetlistSteelM3(int id_Sensor);
+
+        [OperationContract]
+        List<SensorSteel> GetlistSensor_SteelM1(int Id_Sensors, int Id_Steel);
+
+        [OperationContract]
+        List<SensorSteelM3> GetlistSensor_SteelM3(int Id_Sensors, int Id_Steel);
 
         // TODO: Добавьте здесь операции служб
     }

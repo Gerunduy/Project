@@ -104,6 +104,9 @@
     <None Include="Service References\ServiceReference1\Project.ServiceReference1.SensorSteel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\Project.ServiceReference1.SensorSteelM3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\Project.ServiceReference1.Steels.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

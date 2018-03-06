@@ -13,19 +13,35 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetlistSteel">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetlistSteelResponse">
+  <xs:element name="GetlistSteelM1">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetlistSteelResult" nillable="true" type="q2:ArrayOfSteels" />
+        <xs:element minOccurs="0" name="id_Sensor" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetlistSensor_Steel">
+  <xs:element name="GetlistSteelM1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetlistSteelM1Result" nillable="true" type="q2:ArrayOfSteels" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetlistSteelM3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id_Sensor" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetlistSteelM3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetlistSteelM3Result" nillable="true" type="q3:ArrayOfSteels" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetlistSensor_SteelM1">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Id_Sensors" type="xs:int" />
@@ -33,10 +49,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetlistSensor_SteelResponse">
+  <xs:element name="GetlistSensor_SteelM1Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetlistSensor_SteelResult" nillable="true" type="q3:ArrayOfSensorSteel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetlistSensor_SteelM1Result" nillable="true" type="q4:ArrayOfSensorSteel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetlistSensor_SteelM3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id_Sensors" type="xs:int" />
+        <xs:element minOccurs="0" name="Id_Steel" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetlistSensor_SteelM3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetlistSensor_SteelM3Result" nillable="true" type="q5:ArrayOfSensorSteelM3" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

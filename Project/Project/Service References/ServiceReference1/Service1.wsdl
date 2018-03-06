@@ -13,30 +13,50 @@
   <wsdl:message name="IService1_GetlistSensor_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetlistSensorResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetlistSteel_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetlistSteel" />
+  <wsdl:message name="IService1_GetlistSteelM1_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSteelM1" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetlistSteel_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetlistSteelResponse" />
+  <wsdl:message name="IService1_GetlistSteelM1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSteelM1Response" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetlistSensor_Steel_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetlistSensor_Steel" />
+  <wsdl:message name="IService1_GetlistSteelM3_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSteelM3" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetlistSensor_Steel_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetlistSensor_SteelResponse" />
+  <wsdl:message name="IService1_GetlistSteelM3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSteelM3Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetlistSensor_SteelM1_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSensor_SteelM1" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetlistSensor_SteelM1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSensor_SteelM1Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetlistSensor_SteelM3_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSensor_SteelM3" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetlistSensor_SteelM3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetlistSensor_SteelM3Response" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetlistSensor">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSensor" message="tns:IService1_GetlistSensor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSensorResponse" message="tns:IService1_GetlistSensor_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetlistSteel">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSteel" message="tns:IService1_GetlistSteel_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSteelResponse" message="tns:IService1_GetlistSteel_OutputMessage" />
+    <wsdl:operation name="GetlistSteelM1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSteelM1" message="tns:IService1_GetlistSteelM1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSteelM1Response" message="tns:IService1_GetlistSteelM1_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetlistSensor_Steel">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSensor_Steel" message="tns:IService1_GetlistSensor_Steel_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSensor_SteelResponse" message="tns:IService1_GetlistSensor_Steel_OutputMessage" />
+    <wsdl:operation name="GetlistSteelM3">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSteelM3" message="tns:IService1_GetlistSteelM3_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSteelM3Response" message="tns:IService1_GetlistSteelM3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetlistSensor_SteelM1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSensor_SteelM1" message="tns:IService1_GetlistSensor_SteelM1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSensor_SteelM1Response" message="tns:IService1_GetlistSensor_SteelM1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetlistSensor_SteelM3">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetlistSensor_SteelM3" message="tns:IService1_GetlistSensor_SteelM3_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetlistSensor_SteelM3Response" message="tns:IService1_GetlistSensor_SteelM3_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -50,8 +70,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetlistSteel">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetlistSteel" style="document" />
+    <wsdl:operation name="GetlistSteelM1">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetlistSteelM1" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -59,8 +79,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetlistSensor_Steel">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetlistSensor_Steel" style="document" />
+    <wsdl:operation name="GetlistSteelM3">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetlistSteelM3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetlistSensor_SteelM1">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetlistSensor_SteelM1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetlistSensor_SteelM3">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetlistSensor_SteelM3" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

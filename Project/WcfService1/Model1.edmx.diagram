@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="db_AAZModel.Steels" Width="1.5" PointX="6.25" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="db_AAZModel.FK_SensorSteel_Sensors" ManuallyRouted="false" />
         <AssociationConnector Association="db_AAZModel.FK_SensorSteel_Steels" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_AAZModel.SensorSteelM3" Width="1.5" PointX="2.5" PointY="4" />
+        <AssociationConnector Association="db_AAZModel.FK_SensorSteelM3_Sensors" />
+        <AssociationConnector Association="db_AAZModel.FK_SensorSteelM3_Steels" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
