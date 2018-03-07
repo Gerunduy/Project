@@ -18,7 +18,7 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="1" Name="tblWait" FontSize="50" Text="Обработка..." Padding="100,115,100,100" TextAlignment="Center" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
-        <TabControl Grid.Row="1" Grid.Column="1" x:Name="tabControl">
+        <TabControl Grid.Row="1" Grid.Column="1" Name="tabControl">
             <TabItem Header="Соединения паропроводов">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -244,7 +244,7 @@
                         <Image Grid.Row="10" Grid.Column="0" Name="Image22_png" Height="26" Source="Image22.png" Stretch="Fill" Width="25"/>
                         <TextBlock Grid.Row="10" Grid.Column="1" Name="label10" Text="=" FontSize="16"/>
 
-                        <TextBlock Grid.Row="2" Grid.Column="4" Text="Марка"/>
+                        <TextBlock Grid.Row="2" Grid.Column="4" Text="Датчик"/>
                         <ComboBox Grid.Row="2" Grid.Column="6" Name="combobox4" SelectionChanged="combobox4_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -254,7 +254,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <TextBlock Grid.Row="4" Grid.Column="4" Text="Датчик"/>
+                        <TextBlock Grid.Row="4" Grid.Column="4" Text="Марка"/>
                         <ComboBox Grid.Row="4" Grid.Column="6" Name="combobox5" SelectionChanged="combobox5_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>

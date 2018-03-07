@@ -26,6 +26,7 @@ namespace Project
             InitializeComponent();
             client.GetlistSensorCompleted += Client_GetlistSensorCompleted;
             client.GetlistSensorAsync();
+            Waiting(true);
             client.GetlistSteelM1Completed += Client_GetlistSteelM1Completed;
             
             client.GetlistSensor_SteelM1Completed += Client_GetlistSensor_SteelM1Completed;
@@ -33,6 +34,32 @@ namespace Project
             client.GetlistSensor_SteelM3Completed += Client_GetlistSensor_SteelM3Completed;
 
         }
+        //========================================================================================
+        private void Waiting(bool Wait)
+        {
+            if (Wait)
+            {
+                tabControl.Visibility = Visibility.Hidden;
+                tblWait.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                tabControl.Visibility = Visibility.Visible;
+                tblWait.Visibility = Visibility.Hidden;
+            }
+        }
+        private void Waiting2(bool Wait)
+        {
+            if (Wait)
+            {
+                tabControl.IsEnabled = false;
+            }
+            else
+            {
+                tabControl.IsEnabled = true;
+            }
+        }
+        //========================================================================================
 
         private void Client_GetlistSensor_SteelM3Completed(object sender, ServiceReference1.GetlistSensor_SteelM3CompletedEventArgs e)
         {
@@ -41,10 +68,14 @@ namespace Project
                
                 combobox6.ItemsSource = e.Result;
                 combobox7.ItemsSource = e.Result;
+                Waiting2(false);
             }
 
             else
+            {
                 MessageBox.Show(e.Error.Message);
+                Waiting2(false);
+            }  
         }
 
         private void Client_GetlistSteelM3Completed(object sender, ServiceReference1.GetlistSteelM3CompletedEventArgs e)
@@ -52,11 +83,14 @@ namespace Project
             if (e.Error == null)
             {
                 combobox5.ItemsSource = e.Result;
-
+                Waiting2(false);
             }
 
             else
+            {
                 MessageBox.Show(e.Error.Message);
+                Waiting2(false);
+            }        
         }
 
         private void Client_GetlistSensor_SteelM1Completed(object sender, ServiceReference1.GetlistSensor_SteelM1CompletedEventArgs e)
@@ -66,10 +100,14 @@ namespace Project
                
                 comboBox2.ItemsSource = e.Result;
                 comboBox3.ItemsSource = e.Result;
+                Waiting2(false);
             }
 
             else
+            {
                 MessageBox.Show(e.Error.Message);
+                Waiting2(false);
+            }
         }
 
         private void Client_GetlistSteelM1Completed(object sender, ServiceReference1.GetlistSteelM1CompletedEventArgs e)
@@ -78,11 +116,14 @@ namespace Project
             {
                
                 comboBox1.ItemsSource = e.Result;
-
+                Waiting2(false);
             }
 
             else
+            {
                 MessageBox.Show(e.Error.Message);
+                Waiting2(false);
+            }  
         }
 
         private void Client_GetlistSensorCompleted(object sender, ServiceReference1.GetlistSensorCompletedEventArgs e)
@@ -92,10 +133,14 @@ namespace Project
                 
                 comboBox.ItemsSource = e.Result;
                 combobox4.ItemsSource = e.Result;
+                Waiting(false);
             }
 
             else
+            {
                 MessageBox.Show(e.Error.Message);
+                Waiting(false);
+            }
         }
 
         //Критерий оценки ресурса сварных соединений паропроводов
@@ -233,6 +278,7 @@ namespace Project
             //else
             {
                 client.GetlistSteelM1Async(temp_Sensors.id_sensor);
+                Waiting2(true);
             }
             
         }
@@ -244,6 +290,7 @@ namespace Project
             if (temp_Sensors != null && temp_Steel != null)
             {
                 client.GetlistSensor_SteelM1Async(temp_Sensors.id_sensor, temp_Steel.id_steel);
+                Waiting2(true);
             }
         }
 
@@ -252,7 +299,8 @@ namespace Project
             ServiceReference1.Sensors temp_Sensors = combobox4.SelectedItem as ServiceReference1.Sensors;
             ServiceReference1.Steels temp_Steel = combobox5.SelectedItem as ServiceReference1.Steels;
             client.GetlistSteelM3Async(temp_Sensors.id_sensor);
-            
+            Waiting2(true);
+
         }
 
         private void combobox5_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -262,6 +310,7 @@ namespace Project
             if (temp_Sensors != null && temp_Steel != null)
             {
                 client.GetlistSensor_SteelM3Async(temp_Sensors.id_sensor, temp_Steel.id_steel);
+                Waiting2(true);
             }
         }
     }
