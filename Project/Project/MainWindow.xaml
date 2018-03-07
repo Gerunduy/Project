@@ -242,7 +242,7 @@
                         <TextBlock Grid.Row="8" Grid.Column="1" Name="label9_Copy2" Text="="/>
                         <TextBox Grid.Row="8" Grid.Column="2" Name="textBox13" TextWrapping="Wrap" Text="0,7"/>
                         <Image Grid.Row="10" Grid.Column="0" Name="Image22_png" Height="26" Source="Image22.png" Stretch="Fill" Width="25"/>
-                        <TextBlock Grid.Row="10" Grid.Column="1" Name="label10" Text="=" FontSize="16"/>
+                        <TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="7" Name="label10" Text="=" FontSize="16"/>
 
                         <TextBlock Grid.Row="2" Grid.Column="4" Text="Датчик"/>
                         <ComboBox Grid.Row="2" Grid.Column="6" Name="combobox4" SelectionChanged="combobox4_SelectionChanged">
