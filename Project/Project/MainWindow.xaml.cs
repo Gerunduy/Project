@@ -110,16 +110,16 @@ namespace Project
                 double Rt1 = Double.Parse(textBox2.Text);
                 double Rt2 = Double.Parse(textBox3.Text);
                 double k = (R1 * R2) / (Rt1 * Rt2);
-                label2.Content = "K=" +Math.Round(k,5).ToString();
+                label2.Text = "K=" +Math.Round(k,5).ToString();
                 if (k < 0.98)
                 {
 
-                    label_anwer.Content = "металл сварных соединений выработал свой ресурс"+"\n" +"и необходимо выполнение ремонтно-восстановительных мероприятий";
+                    label_anwer.Text = "металл сварных соединений выработал свой ресурс и необходимо выполнение ремонтно-восстановительных мероприятий";
 
                 }
                 else
                 {
-                    label_anwer.Content = "металл сварных соединений может работать"+" \n" +"без проведения ремонтно-восстановительных работ.";
+                    label_anwer.Text = "металл сварных соединений может работать без проведения ремонтно-восстановительных работ.";
                 }
             }
             catch (Exception ex)
@@ -151,14 +151,14 @@ namespace Project
                     Kc = dR1 / dR2;
                     y = (r0 - r) / r;
                     Fc = y * Math.Pow(Kc, -1);
-                    result.Content = "Fc=" + Math.Round(Fc, 5).ToString();
+                    result.Text = "Fc=" + Math.Round(Fc, 5).ToString();
                     if (Fc > 0.22 && Kc > 0.64 && Kc < 1 && y>0.13)
                     {
-                        anwer2.Content = "Металл находится в критическом состоянии.\nНеобходимо проведение ремонтно-восстановительных мероприятий.";
+                        anwer2.Text = "Металл находится в критическом состоянии. Необходимо проведение ремонтно-восстановительных мероприятий.";
                     }
                     else
                     {
-                        anwer2.Content = "Металл находится в рабочем состоянии";
+                        anwer2.Text = "Металл находится в рабочем состоянии";
                     }
                 }
                 else
@@ -176,14 +176,14 @@ namespace Project
                     dR2 = Math.Abs(dR2per - dR2par);
                     Kc = dR1 / dR2;
                     Fc = Math.Pow(Kc, -1);
-                    result.Content = "Fc=" + Math.Round(Fc, 5).ToString();
+                    result.Text = "Fc=" + Math.Round(Fc, 5).ToString();
                     if(Fc>0.22 && Kc>0.64 && Kc < 1)
                     {
-                        anwer2.Content = "Металл находится в критическом состоянии.\nНеобходимо проведение ремонтно-восстановительных мероприятий.";
+                        anwer2.Text = "Металл находится в критическом состоянии. Необходимо проведение ремонтно-восстановительных мероприятий.";
                     }
                     else
                     {
-                        anwer2.Content = "Металл находится в рабочем состоянии";
+                        anwer2.Text = "Металл находится в рабочем состоянии";
                     }
                 }
             }
@@ -206,14 +206,14 @@ namespace Project
                 double y = Double.Parse(textBox13.Text);
                 double Kf = 0;
                 Kf = ((Wr - W0) / (Wf - W0)) * (Wf / Wr) * y;
-                label10.Content = "= " + Math.Round(Kf, 5).ToString();
+                label10.Text = "= " + Math.Round(Kf, 5).ToString();
                 if(Kf>0.7 && Kf < 0.9)
                 {
-                    anwer3.Content = "Металл достиг предельного состояния.";
+                    anwer3.Text = "Металл достиг предельного состояния.";
                 }
                 else
                 {
-                    anwer3.Content = "Металл контролируемого элемента может работать  \nбез проведения ремонтно-восстановительных работ.";
+                    anwer3.Text = "Металл контролируемого элемента может работать без проведения ремонтно-восстановительных работ.";
                 }
             }
             catch (Exception ex)

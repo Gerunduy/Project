@@ -5,169 +5,271 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="Оценки работающего металла" Height="395" Width="566">
+        Title="Оценки работающего металла" MinHeight="400" MinWidth="600" Height="420" Width="620" MaxHeight="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <TabControl x:Name="tabControl" Margin="10">
-            <TabItem Header="соединения паропроводов">
-                <Grid >
-                    <Label x:Name="label" Content="R(01)=" Margin="10,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46"/>
-                    <Label x:Name="label1" Content="R(02)=" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label2" Content="K=" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" FontSize="16"/>
-                    <Button x:Name="button" Content="Расчитать" HorizontalAlignment="Left" Margin="269,126,0,0" VerticalAlignment="Top" Width="120" Height="62" Click="button_Click"/>
-                    <Label x:Name="label3" Content="Критерий оценки ресурса сварных соединений паропроводов" Margin="10,10,10,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label4" Content="Rt(01)=" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label5" Content="Rt(02)=" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="65,100,0,0" TextWrapping="Wrap" Text="0,5" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="65,131,0,0" TextWrapping="Wrap" Text="0,4" VerticalAlignment="Top" Width="120"/>
-                    <Label x:Name="label11" Content="Датчик" HorizontalAlignment="Left" Margin="204,44,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBox" Width="120" Margin="269,47,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" SelectionChanged="comboBox_SelectionChanged">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=name_sensor}">
-
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <Label x:Name="label12" Content="Марка" Margin="204,77,0,0" HorizontalAlignment="Left" Width="49" Height="37" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBox1" Width="120" Margin="269,82,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" SelectionChanged="comboBox1_SelectionChanged">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=name_steel}">
-
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox x:Name="comboBox2" Width="120" Margin="65,47,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=R01}">
-
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox x:Name="comboBox3" Width="120" Margin="65,75,0,0" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=R02}">
-
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <Label x:Name="label_anwer"  Content="" Margin="10,193,10,60" FontSize="16"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="барабаны котлов">
-                <Grid >
-                    <Label x:Name="label6" Content="Критерий оценки ресурса сварных барабанов котлов" Margin="10,10,10,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label7" Content="=" Margin="45,45,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                    <Label x:Name="label7_Copy" Content="=" Margin="45,73,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                    <Label x:Name="label7_Copy1" Content="=" Margin="54,97,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                    <Label x:Name="label7_Copy2" Content="=" Margin="52,128,437,151" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                    <Label x:Name="label7_Copy3" Content="=" Margin="56,154,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                    <Label x:Name="label7_Copy4" Content="=" Margin="52,183,437,91" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                    <Image x:Name="Image4_png" Height="30" Source="Image4.png" Stretch="Fill" Width="30" Margin="10,38,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image5_png" Height="30" Source="Image5.png" Stretch="Fill" Width="20" Margin="10,73,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image11_png" Height="25" Source="Image11.png" Stretch="Fill" Width="48" Margin="6,103,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image12_png" Height="25" Source="Image12.png" Stretch="Fill" Width="42" Margin="5,133,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image13_png" Height="25" Source="Image13.png" Stretch="Fill" Width="44" Margin="10,185,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image14_png" Height="25" Source="Image14.png" Stretch="Fill" Width="46" Margin="10,158,0,0" RenderTransformOrigin="0.457,0.04" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox4" Height="23" TextWrapping="Wrap" Text="0,2" Width="120" Margin="90,101,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="90,157,0,0" TextWrapping="Wrap" Text="0,6" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="24" Margin="90,185,0,0" TextWrapping="Wrap" Text="0,8" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="90,45,0,0" TextWrapping="Wrap" Text="0,2" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="textBox8" Height="23" TextWrapping="Wrap" Text="0,5" Width="120" Margin="90,129,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox9" Height="23" TextWrapping="Wrap" Text="0,8" Width="120" Margin="90,73,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Button x:Name="button1" Content="Рассчитать" Margin="331,99,0,0" Click="button1_Click" Height="73" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
-                    <Label x:Name="result" Content="" Margin="10,216,447,58" FontSize="16"/>
-                    <Label x:Name="anwer2" Content="" Margin="10,263,0,0" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="512" FontSize="16"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="длительно-работающий металл">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="1" Name="tblWait" FontSize="50" Text="Обработка..." Padding="100,115,100,100" TextAlignment="Center" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+        <TabControl Grid.Row="1" Grid.Column="1" x:Name="tabControl">
+            <TabItem Header="Соединения паропроводов">
                 <Grid>
-                    <ComboBox x:Name="combobox7" Width="120" Margin="74,76,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=Wf}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="2"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Name="label3" TextAlignment="Center" Text="Критерий оценки ресурса сварных соединений паропроводов"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Name="label" Text="R(01)="/>
+                        <ComboBox Grid.Row="2" Grid.Column="2" Name="comboBox2">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=R01}">
 
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox x:Name="combobox6" Width="120" Margin="74,45,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=W0}">
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Name="label1" Text="R(02)="/>
+                        <ComboBox Grid.Row="4" Grid.Column="2" Name="comboBox3">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=R02}">
 
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <Label x:Name="label8" Content="Комплексный критерий предельного состояния длительно-работающего металла" Margin="10,6,10,0" Height="33" VerticalAlignment="Top"/>
-                    <Label x:Name="label9" Content="=" HorizontalAlignment="Left" Margin="41,38,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label9_Copy" Content="=" HorizontalAlignment="Left" Margin="41,72,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="label9_Copy1" Content="=" HorizontalAlignment="Left" Margin="47,109,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox10" Height="23" TextWrapping="Wrap" Text="0,9" Width="120" Margin="74,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Button x:Name="button2" Content="Рассчитать" Margin="280,127,0,0" Click="button2_Click" HorizontalAlignment="Left" Width="120" Height="61" VerticalAlignment="Top"/>
-                    <Label x:Name="label10" Content="=" Margin="50,165,338,115" FontSize="16"/>
-                    <Label x:Name="label9_Copy2" Content="=" HorizontalAlignment="Left" Margin="47,135,0,0" VerticalAlignment="Top"/>
-                    <Image x:Name="Image18_png" Height="29" Source="Image18.png" Stretch="Fill" Width="26" Margin="20,44,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Image x:Name="Image19_png" Height="29" Source="Image19.png" Stretch="Fill" Width="23" Margin="20,76,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Image x:Name="Image20_png" Height="29" Source="Image20.png" Stretch="Fill" Width="22" Margin="20,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image21_png" Height="22" Source="Image21.png" Stretch="Fill" Width="15" Margin="20,142,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Image x:Name="Image22_png" Height="26" Source="Image22.png" Stretch="Fill" Width="25" Margin="20,175,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="textBox13" Height="23" TextWrapping="Wrap" Text="0,7" Width="120" Margin="74,139,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Label Content="Марка" Margin="204,72,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="71"/>
-                    <Label Content="Датчик" Margin="204,41,0,0" HorizontalAlignment="Left" Width="71" Height="26" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="combobox5" Width="120" Margin="280,76,0,0" SelectionChanged="combobox5_SelectionChanged" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=name_steel}">
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Grid.Row="6" Grid.Column="0" Name="label4" Text="Rt(01)="/>
+                        <TextBox Grid.Row="6" Grid.Column="2" Name="textBox2" TextWrapping="Wrap" Text="0,5"/>
+                        <TextBlock Grid.Row="8" Grid.Column="0" Name="label5" Text="Rt(02)="/>
+                        <TextBox Grid.Row="8" Grid.Column="2" Name="textBox3" TextWrapping="Wrap" Text="0,4"/>
+                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="7" Name="label2" Text="K=" FontSize="16"/>
 
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox x:Name="combobox4" Width="120" Margin="280,45,0,0" SelectionChanged="combobox4_SelectionChanged" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=name_sensor}">
+                        <TextBlock Grid.Row="2" Grid.Column="4" Name="label11" Text="Датчик"/>
+                        <ComboBox Grid.Row="2" Grid.Column="6" Name="comboBox" SelectionChanged="comboBox_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=name_sensor}">
 
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <Label x:Name="anwer3" Content="" Margin="20,213,10,10" FontSize="16"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Grid.Row="4" Grid.Column="4" Name="label12" Text="Марка"/>
+                        <ComboBox Grid.Row="4" Grid.Column="6" Name="comboBox1" SelectionChanged="comboBox1_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=name_steel}">
+
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="3" Name="button" Content="Расчитать" Height="35" Margin="10,0,10,0" Click="button_Click"/>
+
+                        <TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="7" TextWrapping="Wrap" Name="label_anwer"  Text="" TextAlignment="Left" FontSize="16"/>
+                    </Grid>
                 </Grid>
             </TabItem>
+            <TabItem Header="Барабаны котлов">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Name="label6" Grid.ColumnSpan="7" TextAlignment="Center" Text="Критерий оценки ресурса сварных барабанов котлов"/>
 
+                        <Image Grid.Row="2" Grid.Column="0" Name="Image4_png" Height="30" Source="Image4.png" Stretch="Fill" Width="30"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Name="label7" Text="="/>
+                        <TextBox Grid.Row="2" Grid.Column="2" Name="textBox7" TextWrapping="Wrap" Text="0,2"/>
+                        <Image Grid.Row="4" Grid.Column="0" Name="Image5_png" Height="30" Source="Image5.png" Stretch="Fill" Width="20"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Name="label7_Copy" Text="="/>
+                        <TextBox Grid.Row="4" Grid.Column="2" Name="textBox9" TextWrapping="Wrap" Text="0,8"/>
+                        <Button Grid.Row="6" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Name="button1" Content="Рассчитать" Click="button1_Click" Height="35" Margin="10,0,10,0"/>
 
+                        <Image Grid.Row="2" Grid.Column="4" Name="Image11_png" Height="25" Source="Image11.png" Stretch="Fill" Width="48"/>
+                        <TextBlock Grid.Row="2" Grid.Column="5" Name="label7_Copy1" Text="="/>
+                        <TextBox Grid.Row="2" Grid.Column="6" Name="textBox4" TextWrapping="Wrap" Text="0,2"/>
+                        <Image Grid.Row="4" Grid.Column="4" Name="Image12_png" Height="25" Source="Image12.png" Stretch="Fill" Width="42"/>
+                        <TextBlock Grid.Row="4" Grid.Column="5" Name="label7_Copy2" Text="="/>
+                        <TextBox Grid.Row="4" Grid.Column="6" Name="textBox8" TextWrapping="Wrap" Text="0,5"/>
+                        <Image Grid.Row="6" Grid.Column="4" Name="Image14_png" Height="25" Source="Image14.png" Stretch="Fill" Width="46" RenderTransformOrigin="0.457,0.04"/>
+                        <TextBlock Grid.Row="6" Grid.Column="5" Name="label7_Copy3" Text="="/>
+                        <TextBox Grid.Row="6" Grid.Column="6" Name="textBox5" TextWrapping="Wrap" Text="0,6"/>
+                        <Image Grid.Row="8" Grid.Column="4" Name="Image13_png" Height="25" Source="Image13.png" Stretch="Fill" Width="44"/>
+                        <TextBlock Grid.Row="8" Grid.Column="5" Name="label7_Copy4" Text="="/>
+                        <TextBox Grid.Row="8" Grid.Column="6" Name="textBox6" TextWrapping="Wrap" Text="0,8"/>
 
+                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="7" Name="result" Text="" FontSize="16"/>
+                        <TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="7" Name="anwer2" Text="" TextAlignment="Left" FontSize="16"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Длительно-работающий металл">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="2"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Name="label8" TextAlignment="Center" TextWrapping="Wrap" Text="Комплексный критерий предельного состояния длительно-работающего металла"/>
 
+                        <Image Grid.Row="2" Grid.Column="0" Name="Image18_png" Height="29" Source="Image18.png" Stretch="Fill" Width="26"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Name="label9" Text="="/>
+                        <ComboBox Grid.Row="2" Grid.Column="2" Name="combobox6">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=W0}">
 
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Image Grid.Row="4" Grid.Column="0" Name="Image19_png" Height="29" Source="Image19.png" Stretch="Fill" Width="23"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Name="label9_Copy" Text="="/>
+                        <ComboBox Grid.Row="4" Grid.Column="2" Name="combobox7">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Wf}">
 
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Image Grid.Row="6" Grid.Column="0" Name="Image20_png" Height="29" Source="Image20.png" Stretch="Fill" Width="22"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" Name="label9_Copy1" Text="="/>
+                        <TextBox Grid.Row="6" Grid.Column="2" Name="textBox10" TextWrapping="Wrap" Text="0,9"/>
+                        <Image Grid.Row="8" Grid.Column="0" Name="Image21_png" Height="22" Source="Image21.png" Stretch="Fill" Width="15"/>
+                        <TextBlock Grid.Row="8" Grid.Column="1" Name="label9_Copy2" Text="="/>
+                        <TextBox Grid.Row="8" Grid.Column="2" Name="textBox13" TextWrapping="Wrap" Text="0,7"/>
+                        <Image Grid.Row="10" Grid.Column="0" Name="Image22_png" Height="26" Source="Image22.png" Stretch="Fill" Width="25"/>
+                        <TextBlock Grid.Row="10" Grid.Column="1" Name="label10" Text="=" FontSize="16"/>
 
+                        <TextBlock Grid.Row="2" Grid.Column="4" Text="Марка"/>
+                        <ComboBox Grid.Row="2" Grid.Column="6" Name="combobox4" SelectionChanged="combobox4_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=name_sensor}">
 
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Grid.Row="4" Grid.Column="4" Text="Датчик"/>
+                        <ComboBox Grid.Row="4" Grid.Column="6" Name="combobox5" SelectionChanged="combobox5_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=name_steel}">
 
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="3" Name="button2" Content="Рассчитать" Click="button2_Click" Height="35" Margin="10,0,10,0"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
+                        <TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="7" Name="anwer3" TextWrapping="Wrap" TextAlignment="Left" Text="" FontSize="16"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
