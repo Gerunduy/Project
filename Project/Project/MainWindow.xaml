@@ -56,9 +56,12 @@
                             <ColumnDefinition Width="5"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
+
                         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Name="label3" TextAlignment="Center" Text="Критерий оценки ресурса сварных соединений паропроводов"/>
                         <TextBlock Grid.Row="2" Grid.Column="0" Name="label" Text="R(01)="/>
-                        <ComboBox Grid.Row="2" Grid.Column="2" Name="comboBox2">
+                        <TextBox x:Name="textboxR01" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2"  Text="TextBox" Margin="0,1"/>
+
+                        <!--<ComboBox Grid.Row="2" Grid.Column="2" Name="comboBox2">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=R01}">
@@ -66,9 +69,10 @@
                                     </TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        </ComboBox>-->
                         <TextBlock Grid.Row="4" Grid.Column="0" Name="label1" Text="R(02)="/>
-                        <ComboBox Grid.Row="4" Grid.Column="2" Name="comboBox3">
+                        <TextBox x:Name="textboxR02" Height="23" TextWrapping="Wrap" Grid.Row="4" Grid.Column="2"  Text="TextBox" Margin="0,1"/>
+                        <!--<ComboBox Grid.Row="4" Grid.Column="2" Name="comboBox3">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=R02}">
@@ -76,12 +80,12 @@
                                     </TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        </ComboBox>-->
                         <TextBlock Grid.Row="6" Grid.Column="0" Name="label4" Text="Rt(01)="/>
                         <TextBox Grid.Row="6" Grid.Column="2" Name="textBox2" TextWrapping="Wrap" Text="0,5"/>
                         <TextBlock Grid.Row="8" Grid.Column="0" Name="label5" Text="Rt(02)="/>
                         <TextBox Grid.Row="8" Grid.Column="2" Name="textBox3" TextWrapping="Wrap" Text="0,4"/>
-                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="7" Name="label2" Text="K=" FontSize="16"/>
+                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="4" Name="label2" Text="K=" FontSize="16"/>
 
                         <TextBlock Grid.Row="2" Grid.Column="4" Name="label11" Text="Датчик"/>
                         <ComboBox Grid.Row="2" Grid.Column="6" Name="comboBox" SelectionChanged="comboBox_SelectionChanged">
@@ -104,8 +108,9 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         <Button Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="3" Name="button" Content="Расчитать" Height="35" Margin="10,0,10,0" Click="button_Click"/>
-
+                        <Button Content="Справка" Grid.Row="10" Grid.Column="4" Margin="10,0" Grid.ColumnSpan="3" Click="Button_Click_2"/>
                         <TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="7" TextWrapping="Wrap" Name="label_anwer"  Text="" TextAlignment="Left" FontSize="16"/>
+
                     </Grid>
                 </Grid>
             </TabItem>
@@ -169,8 +174,9 @@
                         <TextBlock Grid.Row="8" Grid.Column="5" Name="label7_Copy4" Text="="/>
                         <TextBox Grid.Row="8" Grid.Column="6" Name="textBox6" TextWrapping="Wrap" Text="0,8"/>
 
-                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="7" Name="result" Text="" FontSize="16"/>
+                        <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="4" Name="result" Text="" FontSize="16"/>
                         <TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="7" Name="anwer2" Text="" TextAlignment="Left" FontSize="16"/>
+                        <Button Content="Справка" Grid.Row="10" Grid.Column="4" Margin="10,0" Grid.ColumnSpan="3" Click="Button_Click_3"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -215,7 +221,8 @@
 
                         <Image Grid.Row="2" Grid.Column="0" Name="Image18_png" Height="29" Source="Image18.png" Stretch="Fill" Width="26"/>
                         <TextBlock Grid.Row="2" Grid.Column="1" Name="label9" Text="="/>
-                        <ComboBox Grid.Row="2" Grid.Column="2" Name="combobox6">
+                        <TextBox x:Name="textboxW0" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2"  Text="TextBox" Margin="0,1"/>
+                        <!--<ComboBox Grid.Row="2" Grid.Column="2" Name="combobox6">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=W0}">
@@ -223,10 +230,11 @@
                                     </TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        </ComboBox>-->
                         <Image Grid.Row="4" Grid.Column="0" Name="Image19_png" Height="29" Source="Image19.png" Stretch="Fill" Width="23"/>
                         <TextBlock Grid.Row="4" Grid.Column="1" Name="label9_Copy" Text="="/>
-                        <ComboBox Grid.Row="4" Grid.Column="2" Name="combobox7">
+                        <TextBox x:Name="textboxWf" Height="23" TextWrapping="Wrap" Grid.Row="4" Grid.Column="2"  Text="TextBox" Margin="0,1"/>
+                        <!--<ComboBox Grid.Row="4" Grid.Column="2" Name="combobox7">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=Wf}">
@@ -234,15 +242,24 @@
                                     </TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        </ComboBox>-->
                         <Image Grid.Row="6" Grid.Column="0" Name="Image20_png" Height="29" Source="Image20.png" Stretch="Fill" Width="22"/>
                         <TextBlock Grid.Row="6" Grid.Column="1" Name="label9_Copy1" Text="="/>
                         <TextBox Grid.Row="6" Grid.Column="2" Name="textBox10" TextWrapping="Wrap" Text="0,9"/>
                         <Image Grid.Row="8" Grid.Column="0" Name="Image21_png" Height="22" Source="Image21.png" Stretch="Fill" Width="15"/>
                         <TextBlock Grid.Row="8" Grid.Column="1" Name="label9_Copy2" Text="="/>
-                        <TextBox Grid.Row="8" Grid.Column="2" Name="textBox13" TextWrapping="Wrap" Text="0,7"/>
+                        <!--<TextBox Grid.Row="8" Grid.Column="2" Name="textBox13" TextWrapping="Wrap" Text="0,7"/>-->
+                        <ComboBox Grid.Row="8" Grid.Column="2" Name="combobox8">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=name_y}">
+
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <Image Grid.Row="10" Grid.Column="0" Name="Image22_png" Height="26" Source="Image22.png" Stretch="Fill" Width="25"/>
-                        <TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="7" Name="label10" Text="=" FontSize="16"/>
+                        <TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" Name="label10" Text="=" FontSize="16"/>
 
                         <TextBlock Grid.Row="2" Grid.Column="4" Text="Датчик"/>
                         <ComboBox Grid.Row="2" Grid.Column="6" Name="combobox4" SelectionChanged="combobox4_SelectionChanged">
@@ -265,11 +282,13 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         <Button Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="3" Name="button2" Content="Рассчитать" Click="button2_Click" Height="35" Margin="10,0,10,0"/>
+                        <Button Content="Справка" Grid.Row="10" Grid.Column="4" Margin="10,0" Grid.ColumnSpan="3" Click="Button_Click_1"/>
 
                         <TextBlock Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="7" Name="anwer3" TextWrapping="Wrap" TextAlignment="Left" Text="" FontSize="16"/>
                     </Grid>
                 </Grid>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

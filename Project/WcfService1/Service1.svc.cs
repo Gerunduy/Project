@@ -12,7 +12,7 @@ namespace WcfService1
     // ПРИМЕЧАНИЕ. Чтобы запустить клиент проверки WCF для тестирования службы, выберите элементы Service1.svc или Service1.svc.cs в обозревателе решений и начните отладку.
     public class Service1 : IService1
     {
-        public db_AAZEntities bd = new db_AAZEntities();
+        public zabolotinEntities bd = new zabolotinEntities();
         public List<Sensors> GetlistSensor()
         {
             try
@@ -130,7 +130,7 @@ namespace WcfService1
                 for (int i = 0; i < lv.Count; i++)
                 {
                     SensorSteelM3 temp = new SensorSteelM3();
-                    temp.id_sensor_steel_m3 = lv[i].id_sensor_steel_m3;
+                    temp.id_sensor_steelM3 = lv[i].id_sensor_steelM3;
                     temp.id_sensor = lv[i].id_sensor;
                     temp.W0 = lv[i].W0;
                     temp.Wf = lv[i].Wf;
@@ -141,6 +141,30 @@ namespace WcfService1
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public Boolean GetConnection()
+        {
+            try
+            {
+
+
+                List<SensorSteelM3> result = bd.SensorSteelM3.ToList();
+                if(result.Count != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+                
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

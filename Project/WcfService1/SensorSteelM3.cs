@@ -14,7 +14,7 @@ namespace WcfService1
     
     public partial class SensorSteelM3
     {
-        public int id_sensor_steel_m3 { get; set; }
+        public int id_sensor_steelM3 { get; set; }
         public int id_sensor { get; set; }
         public int id_steel { get; set; }
         public int W0 { get; set; }

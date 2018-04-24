@@ -485,6 +485,14 @@ namespace Project.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetConnection", ReplyAction="http://tempuri.org/IService1/GetConnectionResponse")]
+        bool GetConnection();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetConnection", ReplyAction="http://tempuri.org/IService1/GetConnectionResponse")]
+        System.IAsyncResult BeginGetConnection(System.AsyncCallback callback, object asyncState);
+        
+        bool EndGetConnection(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetlistSensor", ReplyAction="http://tempuri.org/IService1/GetlistSensorResponse")]
         Project.ServiceReference1.Sensors[] GetlistSensor();
         
@@ -528,6 +536,25 @@ namespace Project.ServiceReference1 {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IService1Channel : Project.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetConnectionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetConnectionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -629,6 +656,12 @@ namespace Project.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<Project.ServiceReference1.IService1>, Project.ServiceReference1.IService1 {
         
+        private BeginOperationDelegate onBeginGetConnectionDelegate;
+        
+        private EndOperationDelegate onEndGetConnectionDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetConnectionCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetlistSensorDelegate;
         
         private EndOperationDelegate onEndGetlistSensorDelegate;
@@ -678,6 +711,8 @@ namespace Project.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
+        public event System.EventHandler<GetConnectionCompletedEventArgs> GetConnectionCompleted;
+        
         public event System.EventHandler<GetlistSensorCompletedEventArgs> GetlistSensorCompleted;
         
         public event System.EventHandler<GetlistSteelM1CompletedEventArgs> GetlistSteelM1Completed;
@@ -687,6 +722,54 @@ namespace Project.ServiceReference1 {
         public event System.EventHandler<GetlistSensor_SteelM1CompletedEventArgs> GetlistSensor_SteelM1Completed;
         
         public event System.EventHandler<GetlistSensor_SteelM3CompletedEventArgs> GetlistSensor_SteelM3Completed;
+        
+        public bool GetConnection() {
+            return base.Channel.GetConnection();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetConnection(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetConnection(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndGetConnection(System.IAsyncResult result) {
+            return base.Channel.EndGetConnection(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetConnection(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetConnection(callback, asyncState);
+        }
+        
+        private object[] OnEndGetConnection(System.IAsyncResult result) {
+            bool retVal = this.EndGetConnection(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetConnectionCompleted(object state) {
+            if ((this.GetConnectionCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetConnectionCompleted(this, new GetConnectionCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetConnectionAsync() {
+            this.GetConnectionAsync(null);
+        }
+        
+        public void GetConnectionAsync(object userState) {
+            if ((this.onBeginGetConnectionDelegate == null)) {
+                this.onBeginGetConnectionDelegate = new BeginOperationDelegate(this.OnBeginGetConnection);
+            }
+            if ((this.onEndGetConnectionDelegate == null)) {
+                this.onEndGetConnectionDelegate = new EndOperationDelegate(this.OnEndGetConnection);
+            }
+            if ((this.onGetConnectionCompletedDelegate == null)) {
+                this.onGetConnectionCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetConnectionCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetConnectionDelegate, null, this.onEndGetConnectionDelegate, this.onGetConnectionCompletedDelegate, userState);
+        }
         
         public Project.ServiceReference1.Sensors[] GetlistSensor() {
             return base.Channel.GetlistSensor();

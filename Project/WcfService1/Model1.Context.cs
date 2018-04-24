@@ -13,10 +13,10 @@ namespace WcfService1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db_AAZEntities : DbContext
+    public partial class zabolotinEntities : DbContext
     {
-        public db_AAZEntities()
-            : base("name=db_AAZEntities")
+        public zabolotinEntities()
+            : base("name=zabolotinEntities")
         {
         }
     
@@ -27,7 +27,7 @@ namespace WcfService1
     
         public virtual DbSet<Sensors> Sensors { get; set; }
         public virtual DbSet<SensorSteel> SensorSteel { get; set; }
-        public virtual DbSet<Steels> Steels { get; set; }
         public virtual DbSet<SensorSteelM3> SensorSteelM3 { get; set; }
+        public virtual DbSet<Steels> Steels { get; set; }
     }
 }

@@ -12,6 +12,8 @@ namespace WcfService1
     [ServiceContract]
     public interface IService1
     {
+        [OperationContract]
+        Boolean GetConnection();
 
         [OperationContract]
         List<Sensors> GetlistSensor();
