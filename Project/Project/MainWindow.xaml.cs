@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,22 +23,101 @@ namespace Project
     {
         ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
         reference _reference;
+        List<stel> list_stelM1 = new List<stel>();
+        List<stel> list_stelM3 = new List<stel>();
+        bool type_internet;
         public MainWindow()
         {
             InitializeComponent();
             client.GetlistSensorCompleted += Client_GetlistSensorCompleted;
-            client.GetlistSensorAsync();
+            //client.GetlistSensorAsync();
             Waiting(true);
             client.GetlistSteelM1Completed += Client_GetlistSteelM1Completed;
-            
+
             client.GetlistSensor_SteelM1Completed += Client_GetlistSensor_SteelM1Completed;
             client.GetlistSteelM3Completed += Client_GetlistSteelM3Completed;
             client.GetlistSensor_SteelM3Completed += Client_GetlistSensor_SteelM3Completed;
 
             client.GetConnectionCompleted += Client_GetConnectionCompleted;
-            //client.GetConnectionAsync();
+            client.GetConnectionAsync();
+           
             create_y();
 
+        }
+        public void readfiles()
+        {
+            FileStream file = new FileStream("1_module.txt", FileMode.Open); //создаем файловый поток
+            StreamReader reader = new StreamReader(file); // создаем «потоковый читатель» и связываем его с файловым потоком
+            string s = "";
+
+            while (s != null)
+            {
+                s = reader.ReadLine();
+
+                if (s == null)
+                {
+                    break;
+                }
+                string[] words = s.Split(new char[] { ';' });
+                stel stel = new stel();
+                stel.name_sensor = words[0];
+                stel.name_steel = words[1];
+                stel.list_R01 = new List<int>();
+                stel.list_R02 = new List<int>();
+                for (int i = 0; i < 5; i++)
+                {
+                    stel.list_R01.Add(int.Parse(words[2 + i]));
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    stel.list_R02.Add(int.Parse(words[7 + i]));
+                }
+
+
+                list_stelM1.Add(stel);
+
+            }
+            file.Close();
+            comboBox.ItemsSource = list_stelM1.GroupBy(o => o.name_sensor);
+
+            //читаем 3 модуль
+             file = new FileStream("3_module.txt", FileMode.Open); //создаем файловый поток
+            reader = new StreamReader(file); // создаем «потоковый читатель» и связываем его с файловым потоком
+            s = "";
+
+            while (s != null)
+            {
+                s = reader.ReadLine();
+
+                if (s == null)
+                {
+                    break;
+                }
+                string[] words = s.Split(new char[] { ';' });
+                stel stel = new stel();
+                stel.name_sensor = words[0];
+                stel.name_steel = words[1];
+                stel.list_W0 = new List<int>();
+                stel.list_Wf = new List<int>();
+                for (int i = 0; i < 5; i++)
+                {
+                    stel.list_W0.Add(int.Parse(words[2 + i]));
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    stel.list_Wf.Add(int.Parse(words[7 + i]));
+                }
+
+
+                list_stelM3.Add(stel);
+
+            }
+            file.Close();
+            
+
+            combobox4.ItemsSource = list_stelM3.GroupBy(o => o.name_sensor);
+            comboBox1.ItemsSource = null;
+            combobox5.ItemsSource = null;
         }
 
         public void create_y()
@@ -91,14 +171,42 @@ namespace Project
             public string name_y { get; set; }
         }
 
-
+        public class stel
+        {
+            public string name_sensor { get; set; }
+            public string name_steel { get; set; }
+            public List<int> list_R01 { get; set; }
+            public List<int> list_R02 { get; set; }
+            public List<int> list_W0 { get; set; }
+            public List<int> list_Wf { get; set; }
+        }
+        public class module_1
+        {
+            public List<String> list_sensors;
+            public List<int> list;
+        }
         private void Client_GetConnectionCompleted(object sender, ServiceReference1.GetConnectionCompletedEventArgs e)
         {
             if (e.Error == null)
             {
-
+                
                 if (e.Result == true)
                 {
+                    type_internet = true;
+                    combobox5.ItemsSource = null;
+                    comboBox1.ItemsSource = null;
+                    client.GetlistSensorAsync();
+                    label_internet.Foreground = Brushes.Green;
+                    label_internet.Content = "Соединение с Базой установлено";
+
+                }
+                else
+                {
+
+                    type_internet = false;
+                    label_internet.Foreground = Brushes.Red;
+                    label_internet.Content = "Нет доступа к Базе";
+                    readfiles();
 
                 }
                 Waiting(false);
@@ -142,12 +250,21 @@ namespace Project
         {
             if (e.Error == null)
             {
-                double srWo = Math.Round((double) e.Result.Sum(o => o.W0)/(double)e.Result.Count());
-                textboxW0.Text = srWo.ToString();
-                double srWf = Math.Round((double)e.Result.Sum(o => o.Wf) / (double)e.Result.Count());
-                textboxWf.Text = srWf.ToString();
-                //combobox6.ItemsSource = e.Result;
-                //combobox7.ItemsSource = e.Result;
+                if (e.Result == null)
+                {
+                    MessageBox.Show("Потеряно соединение с базой");
+                    Waiting(true);
+                    client.GetConnectionAsync();
+                }
+                else
+                {
+                    double srWo = Math.Round((double)e.Result.Sum(o => o.W0) / (double)e.Result.Count());
+                    textboxW0.Text = srWo.ToString();
+                    double srWf = Math.Round((double)e.Result.Sum(o => o.Wf) / (double)e.Result.Count());
+                    textboxWf.Text = srWf.ToString();
+                    
+                }
+
                 Waiting2(false);
             }
 
@@ -162,9 +279,19 @@ namespace Project
         {
             if (e.Error == null)
             {
-                textboxW0.Text = "";
-                textboxWf.Text = "";
-                combobox5.ItemsSource = e.Result;
+                if (e.Result == null)
+                {
+                    MessageBox.Show("Потеряно соединение с базой");
+                    Waiting(true);
+                    client.GetConnectionAsync();
+                }
+                else
+                {
+                    textboxW0.Text = "";
+                    textboxWf.Text = "";
+                    combobox5.ItemsSource = e.Result;
+                }
+                
                 Waiting2(false);
             }
 
@@ -179,12 +306,24 @@ namespace Project
         {
             if (e.Error == null)
             {
-                double srR01 =Math.Round( (double)e.Result.Sum(o => o.R01) / (double)e.Result.Count());
-                textboxR01.Text = srR01.ToString();
-                double srR02 = Math.Round((double) e.Result.Sum(o => o.R02) /(double) e.Result.Count());
-                textboxR02.Text = srR02.ToString();
-                //comboBox2.ItemsSource = e.Result;
-                //comboBox3.ItemsSource = e.Result;
+                if (e.Result == null)
+                {
+                    
+                        MessageBox.Show("Потеряно соединение с базой");
+                        Waiting(true);
+                        client.GetConnectionAsync();
+                    
+                }
+                else
+                {
+                    double srR01 = Math.Round((double)e.Result.Sum(o => o.R01) / (double)e.Result.Count());
+                    textboxR01.Text = srR01.ToString();
+                    double srR02 = Math.Round((double)e.Result.Sum(o => o.R02) / (double)e.Result.Count());
+                    textboxR02.Text = srR02.ToString();
+                    //comboBox2.ItemsSource = e.Result;
+                    //comboBox3.ItemsSource = e.Result;
+                    
+                }
                 Waiting2(false);
             }
 
@@ -201,8 +340,20 @@ namespace Project
             {
                 textboxR01.Text = "";
                 textboxR02.Text = "";
-
-                comboBox1.ItemsSource = e.Result;
+                if (e.Result.Count() == 1)
+                {
+                    if (e.Result[0].id_steel == -1)
+                    {
+                        MessageBox.Show("Потеряно соединение с базой");
+                        Waiting(true);
+                        client.GetConnectionAsync();
+                    }
+                }
+                else
+                {
+                    comboBox1.ItemsSource = e.Result;
+                }
+                
                 Waiting2(false);
             }
 
@@ -238,10 +389,7 @@ namespace Project
         {
             try
             {
-                //ServiceReference1.SensorSteel temp_R01 = comboBox2.SelectedItem as ServiceReference1.SensorSteel;
-                //ServiceReference1.SensorSteel temp_R02 = comboBox3.SelectedItem as ServiceReference1.SensorSteel;
-                //double R1 = temp_R01.R01;
-                //double R2 = temp_R02.R02;
+               
                 double R1 = double.Parse(textboxR01.Text);
                 double R2 = double.Parse(textboxR02.Text);
                 double Rt1 = Double.Parse(textBox2.Text);
@@ -330,15 +478,12 @@ namespace Project
             }
 
         }
-
+        //расчет ответа в 3 модуле
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                //ServiceReference1.SensorSteelM3 temp_R01 = combobox6.SelectedItem as ServiceReference1.SensorSteelM3;
-                //ServiceReference1.SensorSteelM3 temp_R02 = combobox7.SelectedItem as ServiceReference1.SensorSteelM3;
-                //double W0 = temp_R01.W0;
-                //double Wf = temp_R02.Wf;
+                
                 double W0 = double.Parse( textboxW0.Text);
                 double Wf= double.Parse(textboxWf.Text);
                 double Wr = Double.Parse(textBox10.Text);
@@ -361,52 +506,137 @@ namespace Project
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //изменение датчика в 1 модуле
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ServiceReference1.Sensors temp_Sensors = comboBox.SelectedItem as ServiceReference1.Sensors;
-            ServiceReference1.Steels temp_Steel = comboBox1.SelectedItem as ServiceReference1.Steels;
-            //if (temp_Sensors != null && temp_Steel!=null)
-            //{
-            //    client.GetlistSensor_SteelAsync(temp_Sensors.id_sensor, temp_Steel.id_steel);
-            //}
-            //else
+            if (type_internet == true)
             {
-                client.GetlistSteelM1Async(temp_Sensors.id_sensor);
-                Waiting2(true);
+                ServiceReference1.Sensors temp_Sensors = comboBox.SelectedItem as ServiceReference1.Sensors;
+               
+                if(temp_Sensors!=null)
+                {
+                    client.GetlistSteelM1Async(temp_Sensors.id_sensor);
+                    Waiting2(true);
+                }
+            }
+            else
+            {
+                textboxR01.Text = "";
+                textboxR02.Text = "";
+                var stel = comboBox.SelectedItem as IGrouping<string, stel>;
+                if (stel != null)
+                {
+                    string name = stel.Key;
+                    comboBox1.ItemsSource = list_stelM1.Where(o => o.name_sensor == name).GroupBy(o => o.name_steel);
+                }
+             
+            }
+            
+            
+        }
+        //изменение стали в 1 модуле
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (type_internet == true)
+            {
+                ServiceReference1.Sensors temp_Sensors = comboBox.SelectedItem as ServiceReference1.Sensors;
+                ServiceReference1.Steels temp_Steel = comboBox1.SelectedItem as ServiceReference1.Steels;
+                if (temp_Sensors != null && temp_Steel != null)
+                {
+                    client.GetlistSensor_SteelM1Async(temp_Sensors.id_sensor, temp_Steel.id_steel);
+                    Waiting2(true);
+                }
+            }
+            else
+            {
+                string name_sensor="";
+                string name_stel = "";
+                var sensor = comboBox.SelectedItem as IGrouping<string, stel>;
+                if (sensor != null)
+                {
+                    name_sensor = sensor.Key;
+                }
+                
+                var stel = comboBox1.SelectedItem as IGrouping<string, stel>;
+                if (stel != null)
+                {
+                    name_stel = stel.Key;
+                }
+                if(name_sensor!="" && name_stel != "")
+                {
+                    double R01 = Math.Round((double)list_stelM1.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_R01.Sum(o => o) / (double)list_stelM1.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_R01.Count());
+                    double R02 = Math.Round((double)list_stelM1.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_R02.Sum(o => o) / (double)list_stelM1.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_R02.Count());
+                    textboxR01.Text = R01.ToString();
+                    textboxR02.Text = R02.ToString();
+                }
+                
             }
             
         }
-
-        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ServiceReference1.Sensors temp_Sensors = comboBox.SelectedItem as ServiceReference1.Sensors;
-            ServiceReference1.Steels temp_Steel = comboBox1.SelectedItem as ServiceReference1.Steels;
-            if (temp_Sensors != null && temp_Steel != null)
-            {
-                client.GetlistSensor_SteelM1Async(temp_Sensors.id_sensor, temp_Steel.id_steel);
-                Waiting2(true);
-            }
-        }
-
+        //изменение дачиков в 3 модуле
         private void combobox4_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ServiceReference1.Sensors temp_Sensors = combobox4.SelectedItem as ServiceReference1.Sensors;
-            ServiceReference1.Steels temp_Steel = combobox5.SelectedItem as ServiceReference1.Steels;
-            client.GetlistSteelM3Async(temp_Sensors.id_sensor);
-            Waiting2(true);
+            if (type_internet == true)
+            {
+                ServiceReference1.Sensors temp_Sensors = combobox4.SelectedItem as ServiceReference1.Sensors;
+                if(temp_Sensors != null)
+                {
+                    client.GetlistSteelM3Async(temp_Sensors.id_sensor);
+                    Waiting2(true);
+                }
+               
+            }
+            else
+            {
+                textboxW0.Text = "";
+                textboxWf.Text = "";
+                var stel = combobox4.SelectedItem as IGrouping<string, stel>;
+                if (stel != null)
+                {
+                    string name = stel.Key;
+                    combobox5.ItemsSource = list_stelM3.Where(o => o.name_sensor == name).GroupBy(o => o.name_steel);
+                }
+               
+            }
 
         }
-
+        //изменение стали в 3 модуле
         private void combobox5_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ServiceReference1.Sensors temp_Sensors = combobox4.SelectedItem as ServiceReference1.Sensors;
-            ServiceReference1.Steels temp_Steel = combobox5.SelectedItem as ServiceReference1.Steels;
-            if (temp_Sensors != null && temp_Steel != null)
+            if (type_internet == true)
             {
-                client.GetlistSensor_SteelM3Async(temp_Sensors.id_sensor, temp_Steel.id_steel);
-                Waiting2(true);
+                ServiceReference1.Sensors temp_Sensors = combobox4.SelectedItem as ServiceReference1.Sensors;
+                ServiceReference1.Steels temp_Steel = combobox5.SelectedItem as ServiceReference1.Steels;
+                if (temp_Sensors != null && temp_Steel != null)
+                {
+                    client.GetlistSensor_SteelM3Async(temp_Sensors.id_sensor, temp_Steel.id_steel);
+                    Waiting2(true);
+                }
             }
+            else
+            {
+                string name_sensor = "";
+                string name_stel = "";
+                var sensor = combobox4.SelectedItem as IGrouping<string, stel>;
+                if (sensor != null)
+                {
+                    name_sensor = sensor.Key;
+                }
+
+                var stel = combobox5.SelectedItem as IGrouping<string, stel>;
+                if (stel != null)
+                {
+                    name_stel = stel.Key;
+                }
+                if (name_sensor != "" && name_stel != "")
+                {
+                    double W0 = Math.Round((double)list_stelM3.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_W0.Sum(o => o) / (double)list_stelM3.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_W0.Count());
+                    double Wf = Math.Round((double)list_stelM3.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_Wf.Sum(o => o) / (double)list_stelM3.First(o => o.name_sensor == name_sensor && o.name_steel == name_stel).list_Wf.Count());
+                    textboxW0.Text = W0.ToString();
+                    textboxWf.Text = Wf.ToString();
+                }
+            }
+            
         }
         //справка по 3 модулю
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -424,7 +654,7 @@ namespace Project
                 //MessageBox.Show("запись не записана");
             }
         }
-
+        //справка по 1 модулю
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             D.type_module = 1;
@@ -440,7 +670,7 @@ namespace Project
                 //MessageBox.Show("запись не записана");
             }
         }
-
+        //справка по 2 модулю
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             D.type_module = 2;
@@ -455,6 +685,12 @@ namespace Project
             {
                 //MessageBox.Show("запись не записана");
             }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            client.GetConnectionAsync();
+            Waiting(true);
         }
     }
 }

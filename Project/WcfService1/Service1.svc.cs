@@ -58,8 +58,9 @@ namespace WcfService1
             {
                 List<Steels> result2 = new List<Steels>();
                 Steels temp = new Steels();
-                temp.id_steel = 1;
+                temp.id_steel = -1;
                 temp.name_steel = ex.Message;
+               
                 result2.Add(temp);
                 return result2;
             }
@@ -89,10 +90,10 @@ namespace WcfService1
             {
                 List<Steels> result2 = new List<Steels>();
                 Steels temp = new Steels();
-                temp.id_steel = 1;
+                temp.id_steel = -1;
                 temp.name_steel = ex.Message;
                 result2.Add(temp);
-                return result2;
+                return null;
             }
         }
         public List<SensorSteel> GetlistSensor_SteelM1( int Id_Sensors, int Id_Steel)
