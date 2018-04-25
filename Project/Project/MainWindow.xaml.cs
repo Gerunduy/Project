@@ -340,14 +340,13 @@ namespace Project
             {
                 textboxR01.Text = "";
                 textboxR02.Text = "";
-                if (e.Result.Count() == 1)
+                if (e.Result ==null)
                 {
-                    if (e.Result[0].id_steel == -1)
-                    {
+                    
                         MessageBox.Show("Потеряно соединение с базой");
                         Waiting(true);
                         client.GetConnectionAsync();
-                    }
+                    
                 }
                 else
                 {

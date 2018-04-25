@@ -62,7 +62,7 @@ namespace WcfService1
                 temp.name_steel = ex.Message;
                
                 result2.Add(temp);
-                return result2;
+                return null;
             }
         }
         public List<Steels> GetlistSteelM3(int id_Sensor)
